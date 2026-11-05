@@ -1,0 +1,201 @@
+[
+  {
+    "archivo": "modelos-blender/altar/altar_muertos_texturizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/arco/arco_cempasuchil.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/botellas/botella_corona_texturizada.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/botellas/botella_victoria_texturizada.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/calaverita/calaverita_exportacion.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/casas/casa_adobe.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/casas/casa_adobe_altar.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/cirios/cirios_individuales_texturizados.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/dulces/dulce_alegria_texturizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/dulces/dulce_cocada_optimizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/dulces/dulce_jamoncillo_texturizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/dulces/dulce_leche_estriado_optimizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/dulces/dulce_limon_relleno_texturizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/dulces/dulce_palanqueta_optimizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/dulces/dulce_tamarindo_optimizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/farol/farol_texturizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/flor/flor_cempasuchil_exportacion.blend",
+    "reconectadas": [
+      "color_verde",
+      "hoja_cempasuchil_color",
+      "verde_este_si"
+    ],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/frutero/frutero_optimizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/jarra/jarra_agua_texturizada.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/jarro/jarro_cafe_texturizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/jarron/jarron_talavera.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/maceta/maceta_cempasuchil.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/mariposa/mariposa_texturizada.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/olla/olla_barro_texturizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/pan/pan_de_muerto_optimizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/papel_picado/papeles_texturizados.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/petalo/petalo_base.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/platos/plato_carnitas_texturizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/platos/plato_mole_texturizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/platos/plato_tacos_dorados_texturizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/platos/plato_tamales_texturizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/portarretratos/portarretratos_texturizados.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/sahumerio/sahumerio.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/vaso/vaso_agua_texturizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/veladoras/veladora_1_optimizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/veladoras/veladora_2_optimizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/veladoras/veladora_3_optimizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/veladoras/veladora_4_optimizado.blend",
+    "reconectadas": [],
+    "faltantes": []
+  },
+  {
+    "archivo": "modelos-blender/veladoras/veladora_5.blend",
+    "reconectadas": [],
+    "faltantes": []
+  }
+]

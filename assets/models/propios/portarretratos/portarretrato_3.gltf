@@ -1,0 +1,547 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.2.40",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_materials_transmission",
+    "KHR_materials_ior"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "portarretrato_3",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "portarretrato_3_optimizado",
+      "rotation": [
+        -0.07845913618803024,
+        0,
+        0,
+        0.9969174265861511
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "oro",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.8500000238418579,
+        "roughnessFactor": 0.3400000035762787
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "oro.001",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0.8500000238418579,
+        "roughnessFactor": 0.3400000035762787
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "papel",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5600000023841858
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "respaldo",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5600000023841858
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_transmission": {
+          "transmissionFactor": 1
+        },
+        "KHR_materials_ior": {
+          "ior": 1.4500000476837158
+        }
+      },
+      "name": "cristal",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.03500000014901161
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "liston.008",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "indices": 4,
+          "material": 0
+        },
+        {
+          "attributes": {
+            "POSITION": 5,
+            "NORMAL": 6,
+            "TEXCOORD_0": 7,
+            "TEXCOORD_1": 8
+          },
+          "indices": 9,
+          "material": 1
+        },
+        {
+          "attributes": {
+            "POSITION": 10,
+            "NORMAL": 11,
+            "TEXCOORD_0": 12,
+            "TEXCOORD_1": 13
+          },
+          "indices": 14,
+          "material": 2
+        },
+        {
+          "attributes": {
+            "POSITION": 15,
+            "NORMAL": 16,
+            "TEXCOORD_0": 17,
+            "TEXCOORD_1": 18
+          },
+          "indices": 19,
+          "material": 3
+        },
+        {
+          "attributes": {
+            "POSITION": 20,
+            "NORMAL": 21,
+            "TEXCOORD_0": 22,
+            "TEXCOORD_1": 23
+          },
+          "indices": 24,
+          "material": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/png",
+      "name": "portarretrato_3_color",
+      "uri": "../../../textures/portarretratos/portarretrato_3/portarretrato_3_color.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 20094,
+      "max": [
+        0.1177474856376648,
+        0.3052474856376648,
+        0.007350000087171793
+      ],
+      "min": [
+        -0.1177474856376648,
+        -0.0002474875655025244,
+        -0.013350000604987144
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 20094,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 20094,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 20094,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5123,
+      "count": 74112,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 49798,
+      "max": [
+        0.1177474856376648,
+        0.3052474856376648,
+        0.007350000087171793
+      ],
+      "min": [
+        -0.1177474856376648,
+        -0.0002474875655025244,
+        -0.01942005380988121
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 49798,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 49798,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5126,
+      "count": 49798,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5123,
+      "count": 168708,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 10,
+      "componentType": 5126,
+      "count": 353,
+      "max": [
+        0.09049998968839645,
+        0.27799999713897705,
+        -0.0046499972231686115
+      ],
+      "min": [
+        -0.09049998968839645,
+        0.027000024914741516,
+        -0.005350000690668821
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 11,
+      "componentType": 5126,
+      "count": 353,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 12,
+      "componentType": 5126,
+      "count": 353,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 13,
+      "componentType": 5126,
+      "count": 353,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 14,
+      "componentType": 5123,
+      "count": 564,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 15,
+      "componentType": 5126,
+      "count": 581,
+      "max": [
+        0.11499999463558197,
+        0.30250000953674316,
+        -0.007999995723366737
+      ],
+      "min": [
+        -0.11499999463558197,
+        0.002500012516975403,
+        -0.10947167128324509
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 16,
+      "componentType": 5126,
+      "count": 581,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 17,
+      "componentType": 5126,
+      "count": 581,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 18,
+      "componentType": 5126,
+      "count": 581,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 19,
+      "componentType": 5123,
+      "count": 1128,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 20,
+      "componentType": 5126,
+      "count": 351,
+      "max": [
+        0.09049998968839645,
+        0.27799999713897705,
+        -0.0024999966844916344
+      ],
+      "min": [
+        -0.09049998968839645,
+        0.027000024914741516,
+        -0.003500000573694706
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 21,
+      "componentType": 5126,
+      "count": 351,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 22,
+      "componentType": 5126,
+      "count": 351,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 23,
+      "componentType": 5126,
+      "count": 351,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 24,
+      "componentType": 5123,
+      "count": 564,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 241128,
+      "byteOffset": 0,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 241128,
+      "byteOffset": 241128,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 160752,
+      "byteOffset": 482256,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 160752,
+      "byteOffset": 643008,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 148224,
+      "byteOffset": 803760,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 597576,
+      "byteOffset": 951984,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 597576,
+      "byteOffset": 1549560,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 398384,
+      "byteOffset": 2147136,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 398384,
+      "byteOffset": 2545520,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 337416,
+      "byteOffset": 2943904,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4236,
+      "byteOffset": 3281320,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4236,
+      "byteOffset": 3285556,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2824,
+      "byteOffset": 3289792,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2824,
+      "byteOffset": 3292616,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1128,
+      "byteOffset": 3295440,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 6972,
+      "byteOffset": 3296568,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 6972,
+      "byteOffset": 3303540,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4648,
+      "byteOffset": 3310512,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4648,
+      "byteOffset": 3315160,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2256,
+      "byteOffset": 3319808,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4212,
+      "byteOffset": 3322064,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4212,
+      "byteOffset": 3326276,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2808,
+      "byteOffset": 3330488,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2808,
+      "byteOffset": 3333296,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1128,
+      "byteOffset": 3336104,
+      "target": 34963
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 3337232,
+      "uri": "portarretrato_3.bin"
+    }
+  ]
+}

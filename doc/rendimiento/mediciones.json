@@ -1,0 +1,191 @@
+[
+  {
+    "version": "estable",
+    "vista": 4.0,
+    "modo": 0.0,
+    "ms": 34.0951,
+    "fps": 29.3297,
+    "llamadas": 609.0,
+    "triangulos": 4570348.0
+  },
+  {
+    "version": "estable",
+    "vista": 3.0,
+    "modo": 0.0,
+    "ms": 32.5917,
+    "fps": 30.6826,
+    "llamadas": 669.0,
+    "triangulos": 5345696.0
+  },
+  {
+    "version": "estable",
+    "vista": 2.0,
+    "modo": 0.0,
+    "ms": 23.3817,
+    "fps": 42.7685,
+    "llamadas": 1405.0,
+    "triangulos": 6942214.0
+  },
+  {
+    "version": "estable",
+    "vista": 1.0,
+    "modo": 0.0,
+    "ms": 9.14357,
+    "fps": 109.367,
+    "llamadas": 374.0,
+    "triangulos": 1825582.0
+  },
+  {
+    "version": "estable",
+    "vista": 0.0,
+    "modo": 0.0,
+    "ms": 15.6947,
+    "fps": 63.7159,
+    "llamadas": 1611.0,
+    "triangulos": 7089336.0
+  },
+  {
+    "version": "estable",
+    "vista": 5.0,
+    "modo": 0.0,
+    "ms": 6.51526,
+    "fps": 153.486,
+    "llamadas": 258.0,
+    "triangulos": 1702324.0
+  },
+  {
+    "version": "estable",
+    "vista": 6.0,
+    "modo": 0.0,
+    "ms": 16.0098,
+    "fps": 62.4618,
+    "llamadas": 1690.0,
+    "triangulos": 7146080.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 4.0,
+    "modo": 0.0,
+    "ms": 16.5742,
+    "fps": 60.3347,
+    "llamadas": 609.0,
+    "triangulos": 4570348.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 4.0,
+    "modo": 1.0,
+    "ms": 17.308,
+    "fps": 57.7768,
+    "llamadas": 609.0,
+    "triangulos": 4570348.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 3.0,
+    "modo": 0.0,
+    "ms": 14.1701,
+    "fps": 70.5714,
+    "llamadas": 669.0,
+    "triangulos": 5345696.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 3.0,
+    "modo": 1.0,
+    "ms": 14.487,
+    "fps": 69.0274,
+    "llamadas": 669.0,
+    "triangulos": 5345696.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 2.0,
+    "modo": 0.0,
+    "ms": 12.9525,
+    "fps": 77.205,
+    "llamadas": 1405.0,
+    "triangulos": 6942214.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 2.0,
+    "modo": 1.0,
+    "ms": 14.454,
+    "fps": 69.1848,
+    "llamadas": 1405.0,
+    "triangulos": 6942214.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 1.0,
+    "modo": 0.0,
+    "ms": 6.42779,
+    "fps": 155.574,
+    "llamadas": 374.0,
+    "triangulos": 1825582.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 1.0,
+    "modo": 1.0,
+    "ms": 6.64427,
+    "fps": 150.506,
+    "llamadas": 374.0,
+    "triangulos": 1825582.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 0.0,
+    "modo": 0.0,
+    "ms": 11.3191,
+    "fps": 88.3463,
+    "llamadas": 1611.0,
+    "triangulos": 7089336.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 0.0,
+    "modo": 1.0,
+    "ms": 11.8433,
+    "fps": 84.4362,
+    "llamadas": 1611.0,
+    "triangulos": 7089336.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 5.0,
+    "modo": 0.0,
+    "ms": 4.96162,
+    "fps": 201.547,
+    "llamadas": 258.0,
+    "triangulos": 1702324.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 5.0,
+    "modo": 1.0,
+    "ms": 4.73275,
+    "fps": 211.294,
+    "llamadas": 258.0,
+    "triangulos": 1702324.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 6.0,
+    "modo": 0.0,
+    "ms": 11.5942,
+    "fps": 86.25,
+    "llamadas": 1690.0,
+    "triangulos": 7146080.0
+  },
+  {
+    "version": "optimizada",
+    "vista": 6.0,
+    "modo": 1.0,
+    "ms": 11.6706,
+    "fps": 85.685,
+    "llamadas": 1690.0,
+    "triangulos": 7146080.0
+  }
+]

@@ -1,0 +1,284 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.2.40",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_materials_specular"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "cocada_circular"
+    },
+    {
+      "mesh": 1,
+      "name": "fibras_coco"
+    },
+    {
+      "children": [
+        0,
+        1
+      ],
+      "name": "dulce_cocada"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularFactor": 0.5
+        }
+      },
+      "name": "Cocada naranja horneada",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularFactor": 0.5
+        }
+      },
+      "name": "Coco rallado dorado",
+      "normalTexture": {
+        "index": 3
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 4
+        },
+        "metallicFactor": 0,
+        "metallicRoughnessTexture": {
+          "index": 5
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "cocada_circular.001",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "name": "fibras_coco.001",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/png",
+      "name": "cocada_normal",
+      "uri": "../../../textures/dulces/dulce_cocada/cocada_normal.png"
+    },
+    {
+      "mimeType": "image/png",
+      "name": "cocada_color",
+      "uri": "../../../textures/dulces/dulce_cocada/cocada_color.png"
+    },
+    {
+      "mimeType": "image/png",
+      "name": "cocada_rugosidad",
+      "uri": "../../../textures/dulces/dulce_cocada/cocada_rugosidad.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 2825,
+      "max": [
+        0.04353097826242447,
+        0.029165826737880707,
+        0.043397434055805206
+      ],
+      "min": [
+        -0.043089453130960464,
+        -3.0485551860692794e-07,
+        -0.042976755648851395
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2825,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 2825,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 15111,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 12634,
+      "max": [
+        0.04367280378937721,
+        0.029343122616410255,
+        0.04342098906636238
+      ],
+      "min": [
+        -0.0430879108607769,
+        0.0018090778030455112,
+        -0.04299568757414818
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 12634,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 12634,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5123,
+      "count": 23040,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 33900,
+      "byteOffset": 0,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 33900,
+      "byteOffset": 33900,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 22600,
+      "byteOffset": 67800,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 30222,
+      "byteOffset": 90400,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 151608,
+      "byteOffset": 120624,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 151608,
+      "byteOffset": 272232,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 101072,
+      "byteOffset": 423840,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 46080,
+      "byteOffset": 524912,
+      "target": 34963
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 570992,
+      "uri": "dulce_cocada.bin"
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.2.40",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "jarron_talavera_optimizado",
+      "translation": [
+        -7.379800081253052e-05,
+        0.15150000154972076,
+        0.000400591641664505
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "talavera",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.25999999046325684
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Maceta_Atlas_Color",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7799999713897705
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "cuerpo",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        },
+        {
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/png",
+      "name": "jarron_color",
+      "uri": "../../textures/jarron_talavera/jarron_color.png"
+    },
+    {
+      "mimeType": "image/png",
+      "name": "maceta_color",
+      "uri": "../../textures/jarron_talavera/maceta_color.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 54017,
+      "max": [
+        0.10660827159881592,
+        0.15150007605552673,
+        0.10663389414548874
+      ],
+      "min": [
+        -0.10660317540168762,
+        -0.15150001645088196,
+        -0.10655287653207779
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 54017,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 54017,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 225540,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 59188,
+      "max": [
+        0.13147658109664917,
+        0.44041693210601807,
+        0.10580098628997803
+      ],
+      "min": [
+        -0.12350532412528992,
+        0.13241735100746155,
+        -0.11893363296985626
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 59188,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 59188,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5123,
+      "count": 182766,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 648204,
+      "byteOffset": 0,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 648204,
+      "byteOffset": 648204,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 432136,
+      "byteOffset": 1296408,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 451080,
+      "byteOffset": 1728544,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 710256,
+      "byteOffset": 2179624,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 710256,
+      "byteOffset": 2889880,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 473504,
+      "byteOffset": 3600136,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 365532,
+      "byteOffset": 4073640,
+      "target": 34963
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 4439172,
+      "uri": "jarron_talavera.bin"
+    }
+  ]
+}

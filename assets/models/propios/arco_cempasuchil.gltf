@@ -1,0 +1,316 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.2.40",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Arco_Florido_Editable",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "arco_cempasuchil_optimizado"
+    }
+  ],
+  "materials": [
+    {
+      "name": "carrizo",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5840784311294556,
+          0.43415364623069763,
+          0.1946178376674652,
+          1
+        ],
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.800000011920929
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Petalo_Cempasuchil",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.6499999761581421
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Hoja_Cempasuchil",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.6499999761581421
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "arco_cempasuchil",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        },
+        {
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1
+        },
+        {
+          "attributes": {
+            "POSITION": 8,
+            "NORMAL": 9,
+            "TEXCOORD_0": 10
+          },
+          "indices": 11,
+          "material": 2
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/jpeg",
+      "name": "madera_clara",
+      "uri": "../../textures/arco/madera_clara.jpg"
+    },
+    {
+      "mimeType": "image/png",
+      "name": "petalo_cempasuchil",
+      "uri": "../../textures/arco/petalo_cempasuchil.png"
+    },
+    {
+      "mimeType": "image/png",
+      "name": "hoja_cempasuchil_color",
+      "uri": "../../textures/arco/hoja_cempasuchil_color.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 187,
+      "max": [
+        1.3346409797668457,
+        2.5346410274505615,
+        0.03999999910593033
+      ],
+      "min": [
+        -1.3346409797668457,
+        0,
+        -0.03999999910593033
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 187,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 187,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 888,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 167902,
+      "max": [
+        1.656524896621704,
+        2.7736775875091553,
+        0.16206322610378265
+      ],
+      "min": [
+        -1.6495922803878784,
+        -0.07502603530883789,
+        -0.17734694480895996
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 167902,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 167902,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5125,
+      "count": 353226,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5126,
+      "count": 19676,
+      "max": [
+        1.7209481000900269,
+        2.907303810119629,
+        -0.0024087028577923775
+      ],
+      "min": [
+        -1.7109407186508179,
+        -0.15310406684875488,
+        -0.005405557807534933
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5126,
+      "count": 19676,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 10,
+      "componentType": 5126,
+      "count": 19676,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 11,
+      "componentType": 5123,
+      "count": 42132,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2244,
+      "byteOffset": 0,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2244,
+      "byteOffset": 2244,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1496,
+      "byteOffset": 4488,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1776,
+      "byteOffset": 5984,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2014824,
+      "byteOffset": 7760,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2014824,
+      "byteOffset": 2022584,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1343216,
+      "byteOffset": 4037408,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1412904,
+      "byteOffset": 5380624,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 236112,
+      "byteOffset": 6793528,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 236112,
+      "byteOffset": 7029640,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 157408,
+      "byteOffset": 7265752,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 84264,
+      "byteOffset": 7423160,
+      "target": 34963
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 7507424,
+      "uri": "arco_cempasuchil.bin"
+    }
+  ]
+}
