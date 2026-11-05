@@ -156,7 +156,7 @@ bool Escena::cargar() {
     const glm::vec3 alto(0.0f, 1.0f, 0.0f);
     vistas_ = {
         {"Vista general", {-17.0f, 12.0f, 26.0f}, {0.0f, 0.0f, 2.0f}},
-        {"Entrada del panteón", {1.2f, 1.7f, 8.5f}, {0.0f, 2.2f, 16.0f}},
+        {"Entrada del panteón", {0.0f, 1.30f, 14.2f}, {0.0f, 1.20f, -15.2f}},
         {"Camino de pétalos", camino.punto(3.0f) + camino.izquierda(3.0f) * 0.8f + alto * 1.5f,
          camino.punto(14.0f) + alto * 0.5f},
         {"Altar de muertos", {0.5f, 1.6f, -10.0f}, {0.0f, 1.15f, -15.2f}},

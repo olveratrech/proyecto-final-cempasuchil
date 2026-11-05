@@ -12,7 +12,9 @@ glm::vec3 Camara::frente() const {
 
 glm::vec3 Camara::derecha() const { return glm::normalize(glm::cross(frente(), glm::vec3(0.0f, 1.0f, 0.0f))); }
 
-glm::vec3 Camara::ojo() const { return posicion; }
+glm::vec3 Camara::ojo() const {
+    return posicion + glm::vec3(0.0f, vuelo ? 0.0f : balanceo_, 0.0f);
+}
 
 glm::mat4 Camara::vista() const {
     glm::vec3 o = ojo();
@@ -35,9 +37,36 @@ void Camara::girar(float dx, float dy) {
 void Camara::desplazar(const glm::vec3& d, float dt, float multiplicador) {
     float v = velocidad * multiplicador * dt;
     glm::vec3 f = frente();
+    if (!vuelo) {
+        f.y = 0.0f;
+        if (glm::dot(f, f) > 0.0f) f = glm::normalize(f);
+    }
     glm::vec3 r = derecha();
-    posicion += r * d.x * v + glm::vec3(0.0f, 1.0f, 0.0f) * d.y * v + f * d.z * v;
-    posicion.y = std::max(posicion.y, 0.25f);  // no atravesar el suelo
+    posicion += r * d.x * v + f * d.z * v;
+    if (vuelo) posicion += glm::vec3(0.0f, 1.0f, 0.0f) * d.y * v;
+    else posicion.y = alturaOjos;
+    posicion.y = std::max(posicion.y, 0.25f);
+}
+
+void Camara::actualizarPaso(bool caminando, float dt, float multiplicador) {
+    if (vuelo) {
+        balanceo_ = 0.0f;
+        return;
+    }
+    if (caminando) {
+        fasePaso_ += dt * 5.2f * std::sqrt(multiplicador);
+        const float objetivo = std::sin(fasePaso_ * 2.0f) * 0.017f +
+                               std::sin(fasePaso_) * 0.004f;
+        balanceo_ += (objetivo - balanceo_) * std::min(1.0f, dt * 10.0f);
+    } else {
+        balanceo_ += (0.0f - balanceo_) * std::min(1.0f, dt * 8.0f);
+    }
+}
+
+void Camara::establecerVuelo(bool activo) {
+    vuelo = activo;
+    balanceo_ = 0.0f;
+    if (!vuelo) posicion.y = alturaOjos;
 }
 
 void Camara::acercar(float pasos) {

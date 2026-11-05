@@ -9,7 +9,7 @@ struct Opciones {
     int ancho=0, alto=0, msaa=4;
     bool comprobar=false;
     bool diagnosticarRendimiento=false;
-    int vistaInicial=0;
+    int vistaInicial=1;
     bool filtrarLuces=true, realzarAltar=true;
     std::string captura;
 };
@@ -24,13 +24,12 @@ private:
     void aplicarVista(int indice);
     static void alTeclear(GLFWwindow*,int,int,int,int);
     static void alDesplazar(GLFWwindow*,double,double);
-    static void alPulsar(GLFWwindow*,int,int,int);
     GLFWwindow* ventana_=nullptr;
     Opciones op_;
     Escena escena_;
     Renderer renderer_;
     Camara camara_;
-    bool arrastrando_=false;
+    bool ratonActivo_=false;
     double ultimoX_=0, ultimoY_=0;
     int anchoFb_=1, altoFb_=1;
 };

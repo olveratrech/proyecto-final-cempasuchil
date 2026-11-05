@@ -1,118 +1,135 @@
-> Rama de optimización: iluminación íntegramente en OpenGL, luces por objeto y relleno cálido del altar. Pulsa **I** para comparar el relleno con la iluminación original. Los demás controles se conservan. Consulta [mediciones y comparación visual](doc/OPTIMIZACION_ALTAR.md).
 
-# Texturizado, Color e Iluminación — Escena de Día de Muertos
+# Proyecto final de **Computación Gráfica e Interacción Humano-Computadora**  
+Universidad Nacional Autónoma de México — Facultad de Ingeniería
+Semestre 2027-1 
+Prof. Ing. José Ramón Pérez Athié
 
-**Proyecto de Computación Gráfica e Interacción Humano-Computadora · Equipo 8**  
-Universidad Nacional Autónoma de México · Facultad de Ingeniería · Semestre 2027-1
+## Cempasúchil — Ofrenda, memoria y tradición
 
 ## Descripción
 
-Proyecto de visualización 3D en tiempo real, desarrollado en **C++17 y OpenGL 3.3**, que representa una escena inspirada en la celebración mexicana del **Día de Muertos**. Esta etapa transforma los modelos geométricos de una entrega previa mediante texturas, materiales, transparencias, un entorno atmosférico y un sistema de iluminación dinámica.
+**Cempasúchil** es una experiencia gráfica interactiva en 3D desarrollada con **C++17, OpenGL y GLSL**. La escena representa una noche de Día de Muertos: el visitante recorre un panteón, sigue un sendero cubierto de pétalos entre faroles, veladoras y papel picado, y llega a una ofrenda de tres niveles instalada en el portal de una casa de adobe.
 
-La escena integra una ofrenda, un camino empedrado, flores de cempasúchil, papel picado, cirios y otros elementos decorativos. El proyecto busca combinar calidad visual, eficiencia de renderizado y ejecución multiplataforma.
+El proyecto integra modelado, composición, texturizado, color, iluminación y animación. Todos los modelos, materiales, luces y animaciones se calculan en tiempo real mediante OpenGL.
 
 ## Características principales
 
-- **Materiales y texturas:** mapas de color y rugosidad, así como mapeo de normales con cálculo de derivadas (`dFdx` y `dFdy`) en el *fragment shader*.
-- **Flujo de trabajo procedural:** creación y horneado de materiales en Blender; exportación de modelos mediante **glTF 2.0**.
-- **Iluminación híbrida:** luz direccional lunar y hasta **64 luces puntuales** con atenuación cuadrática para cirios y faroles.
-- **Transparencias y materiales ópticos:** recorte alfa para papel picado y pétalos, y aproximaciones de transmitancia y Fresnel para vidrio y líquidos.
-- **Skybox:** entorno panorámico con ajuste de luminancia para crear una atmósfera de transición hacia la noche.
-- **Optimización geométrica:** reducción de polígonos, instanciación de elementos texturizados y generación procedural de coordenadas UV para el camino.
-- **Compatibilidad multiplataforma:** integración y pruebas documentadas en macOS, Windows 10, Arch Linux y Linux Mint.
-
-> **Alcance:** esta entrega no incluye animación esquelética compleja, *shadow mapping* de alta resolución ni reflejos mediante trazado de rayos en tiempo real.
+- La escena completa esta compuesta por un panteón, camino de pelatos de cempasúchil, casas, un altar, faroles, un altar y ofrendas de todo tipo, veladoras y un detalle importente: mariposas monarca.
+- Modelos propios creados en Blender y elementos CC0 de Kenney *Graveyard Kit*.
+- Materiales con color base, rugosidad, metalicidad, normales, emisión, recorte alfa y soporte para vidrio y líquidos.
+- Iluminación OpenGL dinámica para cirios, veladoras, faroles y un relleno cálido del altar.
+- Filtrado de luces por caja envolvente, caché de materiales, instanciado y descarte por *frustum*.
+- Skybox nocturno y composición completa del entorno.
 
 ## Tecnologías
 
 | Tecnología | Uso |
-| --- | --- |
-| **C++17** | Implementación de la aplicación y lógica de la escena |
-| **OpenGL 3.3 / GLSL** | Renderizado, texturizado e iluminación |
-| **Blender** | Modelado, materiales procedurales y horneado de texturas |
-| **glTF 2.0** | Intercambio de modelos y materiales |
-| **CMake** | Configuración y compilación multiplataforma |
-| **GLFW, GLAD, GLM y cgltf** | Ventana y contexto gráfico, acceso a OpenGL, matemáticas y lectura de glTF |
+|---|---|
+| C++17 | Aplicación, escena, interacción y animación procedural |
+| OpenGL / GLSL | Renderizado, materiales, iluminación y actualización de vértices |
+| Blender 5.2 | Modelado, texturizado y animación del papel picado |
+| glTF 2.0 / cgltf | Intercambio y carga de modelos y materiales |
+| CMake | Configuración y compilación multiplataforma |
+| GLFW, GLAD y GLM | Ventana, contexto OpenGL y matemáticas |
 
-Las dependencias GLFW, GLAD, GLM y cgltf están incluidas en el proyecto, según la documentación de los lanzadores. Se requieren las herramientas de compilación y bibliotecas del sistema correspondientes.
+Las dependencias están incluidas en `external/`; la compilación no necesita descargarlas.
 
-## Ejecución
-
-El repositorio incluye lanzadores en [`ejecutables/`](ejecutables/) que automatizan la configuración y compilación **Release**, preparan los recursos `assets/` y `shaders/` y abren la aplicación.
+## Compilación de la escena completa
 
 ### macOS
 
-1. Instala **CMake** y las herramientas de línea de comandos de **Xcode**.
-2. Abre `ejecutables/macOS/TexturizadoCempasuchil-0.2.1.app`.
-3. Si macOS bloquea la aplicación por no estar firmada, haz clic derecho sobre ella y selecciona **Abrir**.
+Se requieren CMake y las herramientas de línea de comandos de Xcode.
 
-### Windows
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j
+./build/TexturizadoCempasuchil
+```
 
-1. Instala **CMake** y **Visual Studio 2022** con la carga de trabajo **Desarrollo para el escritorio con C++**.
-2. Abre `ejecutables/windows/TexturizadoCempasuchil.vbs`.
+También puede utilizarse el lanzador de `ejecutables/macOS/`.
+
+### Windows con Visual Studio 2022
+
+Instalar Visual Studio con **Desarrollo para el escritorio con C++**.
+
+```bat
+cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+cmake --build build --config Release
+build\Release\TexturizadoCempasuchil.exe
+```
 
 ### Linux
 
-1. Instala **CMake**, un compilador de C++ y las bibliotecas de desarrollo de **X11/OpenGL** que requiere GLFW.
-2. Marca `ejecutables/linux/TexturizadoCempasuchil.desktop` como ejecutable o confiable y ábrelo. Alternativamente, ejecuta `ejecutables/linux/iniciar_linux.sh`.
-
-**Diagnóstico:** los lanzadores guardan registros en `logs/`. Para requisitos, rutas de los registros y solución de problemas, consulta [la guía de los lanzadores](ejecutables/README.md).
-
-## Controles de la escena
-
-| Tecla o acción | Función |
-| --- | --- |
-| `W` `A` `S` `D` | Desplazarse por la escena |
-| `Q` / `E` | Descender / ascender |
-| Botón derecho + movimiento del ratón | Orientar la cámara |
-| `Shift` | Acelerar el movimiento |
-| Rueda del ratón | Ajustar la velocidad |
-| `F2` | Alternar entre vista sólida y de alambre |
-| `R` | Volver a la posición inicial |
-| `Esc` | Salir |
-
-## Organización del proyecto
-
-Estas son algunas rutas relevantes para la etapa de texturizado e iluminación:
-
-```text
-.
-├── assets/
-│   ├── models/propios/         # Modelos propios exportados en glTF
-│   ├── textures/               # Mapas de textura y materiales
-│   └── skybox/atardecer/       # Recursos del entorno panorámico
-├── shaders/
-│   ├── escena.vert             # Transformaciones y datos de los vértices
-│   └── escena.frag             # Materiales, normales e iluminación
-├── src/render/
-│   ├── Shader.cpp              # Gestión y compilación de shaders
-│   └── Skybox.cpp              # Renderizado del entorno
-├── ejecutables/                # Lanzadores para macOS, Windows y Linux
-└── doc/
-    ├── esp/                    # Reporte en español
-    └── eng/                    # Reporte en inglés
+```bash
+sudo apt install build-essential cmake libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libgl-dev
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j
+./build/TexturizadoCempasuchil
 ```
 
-## Documentación técnica
+## Controles
 
-Para consultar el desarrollo, la metodología Scrum, las decisiones de implementación, los retos multiplataforma y los resultados visuales:
+| Tecla o acción | Función |
+|---|---|
+| `W A S D` | Caminar por la escena |
+| `Shift` | Aumentar la velocidad de movimiento |
+| Mover el ratón | Orientar la cámara cuando el control está activo |
+| `TAB` | Activar o desactivar el control de cámara con el ratón |
+| Rueda del ratón | Ajustar la velocidad de desplazamiento |
+| `F` | Alternar entre caminata y vuelo libre |
+| `Q / E` | Descender / ascender en modo vuelo |
+| `F2` | Alternar entre renderizado sólido y malla de alambre |
+| `R` | Regresar a la entrada del panteón mirando hacia el altar |
+| `Esc` | Cerrar la aplicación |
 
-- **[Reporte técnico en español (PDF)](doc/esp/Equipo-8-texturizado-esp.pdf)**
-- **[Technical report in English (PDF)](doc/eng/Equipo-8-texturizado-eng.pdf)**
+## Opciones de línea de comandos
 
-## Equipo de desarrollo
+| Opción | Función |
+|---|---|
+| `--vista N` | Vista inicial, de `0` a `6` |
+| `--entrada` | Entrada del panteón |
+| `--altar` | Vista del altar |
+| `--captura ARCHIVO` | Guardar una captura PPM |
+## Estructura del repositorio
 
-| Integrante | Rol |
-| --- | --- |
-| Andrés Basilio Illescas | Product Owner |
-| Emmanuel Trejo Olvera | Scrum Master |
-| Alexis Abraham Pérez Olvera | Developer |
-| Samuel Santiago Cruz Macedo | Developer |
+```text
+├── CMakeLists.txt
+├── README.md
+├── readme.txt
+├── src/                          código C++ de renderizado y escena
+├── shaders/                      programas GLSL
+├── assets/
+│   ├── models/propios/           modelos glTF del equipo
+│   ├── models/libreria/          modelos CC0
+│   │ 
+│   ├── models/propios/papel_picado_cache/
+│   │                             caché de 96 frames de Blender
+│   │ 
+│   ├── textures/                 texturas y materiales
+│   └── skybox/                   entorno panorámico
+├── modelos-blender/              fuentes de modelado y animación
+├── ejecutables/                  lanzadores multiplataforma
+├── doc/                          reportes y documentación técnica
+└── external/                     dependencias incluidas
+```
 
-**Profesor:** Ing. José Ramón Pérez Athié  
-**Asignatura:** Computación Gráfica e Interacción Humano-Computadora · Grupo 04
+## Documentación
+
+- [Reporte técnico en español](doc/esp/Equipo-8-proyecto-final-esp.pdf)
+- [Technical report in English](doc/eng/Equipo-8-proyecto-final-eng.pdf)
+
+## Equipo
+
+- Basilio Illescas Andres — Product Owner
+- Trejo Olvera Emmanuel — Scrum Master
+- Pérez Olvera Alexis Abraham — Developer
+- Cruz Macedo Samuel Santiago — Developer
+
+## Créditos de terceros
+
+- Modelos: [Kenney — Graveyard Kit](https://kenney.nl/assets/graveyard-kit) (CC0).
+- Texturas y entorno: [Poly Haven](https://polyhaven.com) (CC0), cuando se indica en la documentación.
+- Bibliotecas: GLFW, GLAD, GLM, cgltf y stb.
 
 ---
-
-*Proyecto académico de la Facultad de Ingeniería, UNAM. Inspirado en las tradiciones del Día de Muertos.*
 
