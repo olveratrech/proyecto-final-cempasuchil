@@ -127,7 +127,7 @@ DOCUMENTACIÓN
     doc/esp/Equipo-8-proyecto-final-esp.pdf
 
   Inglés:
-    doc/eng/Equipo-8-proyecto-final-eng.pdf
+    doc/eng/Equipo-8-final-project-eng.pdf
 
 ---------------------------------------------------------------------
 EQUIPO

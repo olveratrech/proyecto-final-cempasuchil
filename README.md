@@ -116,7 +116,7 @@ cmake --build build -j
 ## Documentación
 
 - [Reporte técnico en español](doc/esp/Equipo-8-proyecto-final-esp.pdf)
-- [Technical report in English](doc/eng/Equipo-8-proyecto-final-eng.pdf)
+- [Technical report in English](doc/eng/Equipo-8-final-project-eng.pdf)
 
 ## Equipo
 
