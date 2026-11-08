@@ -51,7 +51,34 @@ uniform int uRecibeLucesPuntuales;
 uniform vec3 uSpotPosicion;
 uniform vec3 uSpotDireccion;
 
+// Animación 3 (veladoras) e interacción L (faroles). La máquina de estados en
+// C++ fija el frente de encendido y los niveles; aquí se decide por posición
+// qué velas ya encendieron y se calcula el parpadeo de cada flama.
+uniform int uTipoFuente;      // 0 = material normal, 1 = flama, 2 = farol
+uniform float uVelTiempo;
+uniform float uVelFrente;     // z del frente de encendido (avanza hacia -Z)
+uniform float uVelNivel;
+uniform float uFarolNivel;
+// Plano de recorte por objeto (superficie del agua dentro de la jarra).
+uniform int uRecortar;
+uniform vec4 uPlanoCorte;
+
 out vec4 FragColor;
+
+float azarVela(vec2 celda) {
+    return fract(sin(dot(celda, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+// Factor de una vela situada en p: encendido por tramos de 4.4 m a lo largo
+// del eje del camino y parpadeo con dos senoidales de fase pseudoaleatoria.
+float factorVela(vec3 p) {
+    float tramo = floor(p.z / 4.4) * 4.4 + 2.2;
+    float encendida = 1.0 - smoothstep(tramo - 1.6, tramo + 1.6, uVelFrente);
+    float fase = azarVela(floor(p.xz * 1.25));
+    float parpadeo = 1.0 + 0.10 * sin(uVelTiempo * 13.0 + fase * 40.0)
+                         + 0.05 * sin(uVelTiempo * 29.0 + fase * 17.0);
+    return encendida * uVelNivel * parpadeo;
+}
 
 vec3 normalMapeada(vec3 base) {
     if (uTieneNormal == 0) return base;
@@ -69,6 +96,7 @@ vec3 normalMapeada(vec3 base) {
 
 void main() {
     if (uAlambre != 0) { FragColor = vec4(0.8, 0.8, 0.8, 1.0); return; }
+    if (uRecortar != 0 && dot(uPlanoCorte.xyz, vPosicion) + uPlanoCorte.w > 0.0) discard;
     vec4 base = uColorBase * vTinte;
     if (uTieneColor != 0) base *= texture(uTexturaColor, vUV);
     if (uMascara != 0 && base.a < uCorteAlfa) discard;
@@ -85,6 +113,8 @@ void main() {
     normal = normalMapeada(normal);
     vec3 emision = uEmision;
     if (uTieneEmision != 0) emision *= texture(uTexturaEmision, vUV).rgb;
+    if (uTipoFuente == 1) emision *= factorVela(vPosicion);
+    else if (uTipoFuente == 2) emision *= uFarolNivel;
     // El papel picado conserva su color en penumbra sin comportarse como una
     // fuente de luz real ni iluminar los objetos vecinos.
     emision += base.rgb * uAutoEmision;
@@ -132,8 +162,9 @@ void main() {
                                      uLuces[i].cuadratica * distancia * distancia);
             vec3 medio = normalize(L + vista);
             float spec = pow(max(dot(normal, medio), 0.0), brillo) * ndl;
+            float nivelFuente = uLuces[i].farol > 0.5 ? uFarolNivel : factorVela(uLuces[i].posicion);
             color += (base.rgb * (1.0 - mr.x) * ndl + f0 * spec * mix(1.0, 0.35, mr.y))
-                     * uLuces[i].color * atenuacion * conoFarol * bordeRadio;
+                     * uLuces[i].color * nivelFuente * atenuacion * conoFarol * bordeRadio;
         }
     }
 
