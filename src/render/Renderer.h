@@ -31,6 +31,14 @@ public:
     bool lucesPuntuales = true; // interruptor para diagnóstico comparativo
     bool filtrarLuces = true;
     bool realzarAltar = true;
+
+    // Estado de iluminación animado (lo escribe la clase Animaciones cada cuadro).
+    struct EstadoVelas {
+        float tiempo = 0.0f;   // reloj del parpadeo procedural (s)
+        float frente = -1e4f;  // coordenada Z del frente de encendido; las veladoras con z > frente están encendidas
+        float nivel = 1.0f;    // nivel global de las velas (apagado gradual)
+        float faroles = 1.0f;  // nivel de los faroles (interacción L)
+    } velas;
     Estadisticas stats;
 
 private:
@@ -45,6 +53,8 @@ private:
         glm::vec4 tinte{1.0f};
         glm::vec3 minimo{0}, maximo{0};
         float distancia2 = 0.0f;
+        bool recortar = false;
+        glm::vec4 planoCorte{0.0f};
     };
     struct Plano {
         glm::vec3 n;

@@ -211,6 +211,8 @@ void Renderer::recolectar(Nodo* n, const glm::vec4& tintePadre, ZonaLuz zona) {
             d.mat = &material;
             if (!fuenteFarol) registrarLuz(*d.mat, c, zona);
             d.matriz = n->mundo;
+            d.recortar = n->recortar;
+            d.planoCorte = n->planoCorte;
             cajaMundo(p.min, p.max, n->mundo, d.minimo, d.maximo);
             d.tinte = tinte;
             d.distancia2 = glm::dot(c - ojo_, c - ojo_);
@@ -290,6 +292,10 @@ void Renderer::aplicarLuces(const Shader& s, const Camara& camara) const {
         s.set((base + ".radio2").c_str(), luz.radio2);
         s.set((base + ".farol").c_str(), luz.farol ? 1.0f : 0.0f);
     }
+    s.set("uVelTiempo", velas.tiempo);
+    s.set("uVelFrente", velas.frente);
+    s.set("uVelNivel", velas.nivel);
+    s.set("uFarolNivel", velas.faroles);
     s.set("uSpotActivo", spotlight ? 1 : 0);
     s.set("uSpotPosicion", camara.ojo());
     s.set("uSpotDireccion", glm::normalize(camara.frente()));
@@ -308,6 +314,9 @@ void Renderer::aplicarMaterial(const Shader& s, const Material& m) {
     const float refuerzoEmision = nombreMaterial.find("llama") != std::string::npos ? 1.45f : 1.0f;
     s.set("uEmision", m.emision * refuerzoEmision);
     s.set("uAutoEmision", nombreMaterial.find("papel mate") != std::string::npos ? 0.075f : 0.0f);
+    // Fuentes con animación de luz: flamas (veladoras, cirios) y faroles.
+    s.set("uTipoFuente", nombreMaterial.find("llama") != std::string::npos ? 1
+                         : nombreMaterial.find("luz base") != std::string::npos ? 2 : 0);
     s.set("uMetalico", m.metalico);
     s.set("uRugosidad", m.rugosidad);
     s.set("uEscalaNormal", m.escalaNormal);
@@ -340,6 +349,8 @@ void Renderer::emitir(const Dibujo& d) {
     const Shader& s = d.lote ? shaderInst_ : shader_;
     aplicarMaterial(s, *d.mat);
     s.set("uTinte", d.tinte);
+    s.set("uRecortar", d.recortar ? 1 : 0);
+    if (d.recortar) s.set("uPlanoCorte", d.planoCorte);
     // Conserva orden e intensidad. Solo excluye luces cuyo radio NO puede
     // alcanzar ningún punto del objeto/lote; no hay límite de N luces cercanas.
     int indices[25];

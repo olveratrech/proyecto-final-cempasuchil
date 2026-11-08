@@ -55,6 +55,8 @@ struct Primitiva {
     int material = 0;
     glm::vec3 min{0.0f}, max{0.0f};          // caja envolvente local
     std::vector<Vertice> verticesCPU;
+    std::vector<glm::ivec4> huesos;          // JOINTS_0 (solo mallas con skin)
+    std::vector<glm::vec4> pesos;            // WEIGHTS_0
 };
 
 struct Malla {
@@ -86,6 +88,27 @@ public:
     uint32_t framesPapel = 0;
     uint32_t verticesPapel = 0;
     uint32_t fpsPapel = 24;
+
+    // Animación por huesos (glTF skin). Los clips solo guardan pistas TRS por nodo.
+    struct Clip {
+        struct Canal {
+            int nodo = -1, ruta = 0;  // 0 traslación, 1 rotación (x, y, z, w), 2 escala
+            std::vector<float> tiempos;
+            std::vector<glm::vec4> valores;
+        };
+        std::string nombre;
+        float duracion = 0.0f;
+        std::vector<Canal> canales;
+    };
+    std::vector<Clip> clips;
+    std::vector<int> articulaciones;      // nodo de cada hueso
+    std::vector<glm::mat4> inversas;      // matrices inversas de bind
+    std::vector<glm::mat4> globales;      // matriz de cada nodo en la última pose
+    int clip(const std::string& nombre) const;
+    int nodo(const std::string& nombre) const;
+    // Evalúa el clip a en ta (mezclado con b en tb según peso), deforma la malla
+    // en CPU y sube los vértices a la GPU.
+    void posar(int a, float ta, int b = -1, float tb = 0.0f, float peso = 0.0f);
 
     // Nodos con malla "aplanados" (matriz acumulada dentro del modelo); se usa
     // para el dibujo instanciado, donde el modelo completo se repite N veces.

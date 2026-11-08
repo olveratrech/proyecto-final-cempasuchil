@@ -16,6 +16,7 @@
 #include <cmath>
 #include <filesystem>
 #include <fstream>
+#include <functional>
 #include <map>
 #include <utility>
 
@@ -267,12 +268,14 @@ bool Modelo::cargar(const std::string& rutaArchivo, bool cargarAnimacionPapel) {
             int mat = pr.material ? static_cast<int>(cgltf_material_index(d, pr.material)) : 0;
             if (mat < 0 || static_cast<size_t>(mat) >= materiales.size()) mat = 0;
             const int uvMaterial = materiales[static_cast<size_t>(mat)].texcoord;
-            const cgltf_accessor *apos = nullptr, *anor = nullptr, *auv = nullptr;
+            const cgltf_accessor *apos = nullptr, *anor = nullptr, *auv = nullptr, *ahue = nullptr, *apes = nullptr;
             for (cgltf_size k = 0; k < pr.attributes_count; ++k) {
                 const cgltf_attribute& a = pr.attributes[k];
                 if (a.type == cgltf_attribute_type_position) apos = a.data;
                 else if (a.type == cgltf_attribute_type_normal) anor = a.data;
                 else if (a.type == cgltf_attribute_type_texcoord && a.index == uvMaterial) auv = a.data;
+                else if (a.type == cgltf_attribute_type_joints && a.index == 0) ahue = a.data;
+                else if (a.type == cgltf_attribute_type_weights && a.index == 0) apes = a.data;
             }
             if (!apos) continue;
             std::vector<Vertice> vs(apos->count);
@@ -304,6 +307,18 @@ bool Modelo::cargar(const std::string& rutaArchivo, bool cargarAnimacionPapel) {
             malla.primitivas.push_back(crearPrimitiva(vs, idx, mat));
             if (cargarAnimacionPapel && nombre.rfind("papel_", 0) == 0)
                 malla.primitivas.back().verticesCPU = vs;
+            if (ahue && apes) {
+                Primitiva& p = malla.primitivas.back();
+                p.verticesCPU = vs;
+                p.huesos.resize(vs.size());
+                p.pesos.resize(vs.size());
+                for (cgltf_size k = 0; k < vs.size(); ++k) {
+                    cgltf_uint j[4] = {0, 0, 0, 0};
+                    cgltf_accessor_read_uint(ahue, k, j, 4);
+                    p.huesos[k] = glm::ivec4(j[0], j[1], j[2], j[3]);
+                    cgltf_accessor_read_float(apes, k, &p.pesos[k].x, 4);
+                }
+            }
             triangulos += static_cast<int>(idx.size() / 3);
             vertices += static_cast<int>(vs.size());
         }
@@ -337,6 +352,43 @@ bool Modelo::cargar(const std::string& rutaArchivo, bool cargarAnimacionPapel) {
     } else {
         for (cgltf_size i = 0; i < d->nodes_count; ++i)
             if (!d->nodes[i].parent) raices.push_back(static_cast<int>(i));
+    }
+    if (d->skins_count > 0) {
+        const cgltf_skin& piel = d->skins[0];
+        for (cgltf_size i = 0; i < piel.joints_count; ++i) {
+            articulaciones.push_back(static_cast<int>(cgltf_node_index(d, piel.joints[i])));
+            glm::mat4 m(1.0f);
+            if (piel.inverse_bind_matrices) cgltf_accessor_read_float(piel.inverse_bind_matrices, i, &m[0][0], 16);
+            inversas.push_back(m);
+        }
+    }
+    for (cgltf_size i = 0; i < d->animations_count; ++i) {
+        const cgltf_animation& ca = d->animations[i];
+        Clip clip;
+        clip.nombre = ca.name ? ca.name : "clip_" + std::to_string(i);
+        for (cgltf_size k = 0; k < ca.channels_count; ++k) {
+            const cgltf_animation_channel& canal = ca.channels[k];
+            const int ruta = canal.target_path == cgltf_animation_path_type_translation ? 0
+                           : canal.target_path == cgltf_animation_path_type_rotation ? 1
+                           : canal.target_path == cgltf_animation_path_type_scale ? 2 : -1;
+            if (ruta < 0 || !canal.target_node) continue;
+            Clip::Canal c;
+            c.nodo = static_cast<int>(cgltf_node_index(d, canal.target_node));
+            c.ruta = ruta;
+            const cgltf_accessor* entrada = canal.sampler->input;
+            const cgltf_accessor* salida = canal.sampler->output;
+            // CUBICSPLINE guarda (tangente de entrada, valor, tangente de salida): se usa el valor.
+            const bool cubica = canal.sampler->interpolation == cgltf_interpolation_type_cubic_spline;
+            c.tiempos.resize(entrada->count);
+            c.valores.resize(entrada->count);
+            for (cgltf_size m = 0; m < entrada->count; ++m) {
+                cgltf_accessor_read_float(entrada, m, &c.tiempos[m], 1);
+                cgltf_accessor_read_float(salida, cubica ? m * 3 + 1 : m, &c.valores[m].x, ruta == 1 ? 4 : 3);
+                clip.duracion = std::max(clip.duracion, c.tiempos[m]);
+            }
+            clip.canales.push_back(std::move(c));
+        }
+        clips.push_back(std::move(clip));
     }
     // La esquina inferior de una caja rotada puede estar por debajo de la malla.
     // Usar vértices reales evita trasladar un modelo demasiado arriba del mantel.
@@ -465,6 +517,82 @@ std::unique_ptr<Modelo> Modelo::procedural(const std::string& nombre, const std:
     m->vertices = static_cast<int>(vertices.size());
     m->calcularPlano();
     return m;
+}
+
+int Modelo::clip(const std::string& buscado) const {
+    for (size_t i = 0; i < clips.size(); ++i)
+        if (clips[i].nombre == buscado) return static_cast<int>(i);
+    registro::error("%s: no existe el clip %s", nombre.c_str(), buscado.c_str());
+    return -1;
+}
+
+int Modelo::nodo(const std::string& buscado) const {
+    for (size_t i = 0; i < nodos.size(); ++i)
+        if (nodos[i].nombre == buscado) return static_cast<int>(i);
+    return -1;
+}
+
+void Modelo::posar(int a, float ta, int b, float tb, float peso) {
+    const size_t n = nodos.size();
+    std::vector<glm::vec3> T(n), S(n);
+    std::vector<glm::quat> R(n);
+    for (size_t i = 0; i < n; ++i) { T[i] = nodos[i].traslacion; R[i] = nodos[i].rotacion; S[i] = nodos[i].escala; }
+    auto muestrear = [&](int indice, float t, std::vector<glm::vec3>& t3, std::vector<glm::quat>& r4,
+                         std::vector<glm::vec3>& s3) {
+        if (indice < 0) return;
+        for (const Clip::Canal& c : clips[static_cast<size_t>(indice)].canales) {
+            const size_t k = static_cast<size_t>(std::upper_bound(c.tiempos.begin(), c.tiempos.end(), t) - c.tiempos.begin());
+            const size_t k1 = std::min(k, c.tiempos.size() - 1), k0 = k == 0 ? 0 : k - 1;
+            const float tramo = c.tiempos[k1] - c.tiempos[k0];
+            const float f = tramo > 0.0f ? std::clamp((t - c.tiempos[k0]) / tramo, 0.0f, 1.0f) : 0.0f;
+            const glm::vec4& v0 = c.valores[k0];
+            const glm::vec4& v1 = c.valores[k1];
+            const size_t i = static_cast<size_t>(c.nodo);
+            if (c.ruta == 0) t3[i] = glm::mix(glm::vec3(v0), glm::vec3(v1), f);
+            else if (c.ruta == 2) s3[i] = glm::mix(glm::vec3(v0), glm::vec3(v1), f);
+            else r4[i] = glm::slerp(glm::quat(v0.w, v0.x, v0.y, v0.z), glm::quat(v1.w, v1.x, v1.y, v1.z), f);
+        }
+    };
+    muestrear(a, ta, T, R, S);
+    if (b >= 0 && peso > 0.0f) {
+        std::vector<glm::vec3> T2 = T, S2 = S;
+        std::vector<glm::quat> R2 = R;
+        muestrear(b, tb, T2, R2, S2);
+        for (size_t i = 0; i < n; ++i) {
+            T[i] = glm::mix(T[i], T2[i], peso);
+            S[i] = glm::mix(S[i], S2[i], peso);
+            R[i] = glm::slerp(R[i], R2[i], peso);
+        }
+    }
+    globales.assign(n, glm::mat4(1.0f));
+    std::function<void(int, const glm::mat4&)> recorrer = [&](int i, const glm::mat4& padre) {
+        const size_t k = static_cast<size_t>(i);
+        globales[k] = padre * glm::translate(glm::mat4(1.0f), T[k]) * glm::mat4_cast(R[k]) * glm::scale(glm::mat4(1.0f), S[k]);
+        for (int h : nodos[k].hijos) recorrer(h, globales[k]);
+    };
+    for (int r : raices) recorrer(r, glm::mat4(1.0f));
+    if (soloCPU) return;
+
+    std::vector<glm::mat4> piel(articulaciones.size());
+    for (size_t j = 0; j < piel.size(); ++j) piel[j] = globales[static_cast<size_t>(articulaciones[j])] * inversas[j];
+    for (auto& malla : mallas)
+        for (auto& p : malla.primitivas) {
+            if (p.huesos.empty()) continue;
+            std::vector<Vertice> v = p.verticesCPU;
+            p.min = glm::vec3(1e30f);
+            p.max = glm::vec3(-1e30f);
+            for (size_t k = 0; k < v.size(); ++k) {
+                glm::mat4 m(0.0f);
+                for (int c = 0; c < 4; ++c)
+                    if (p.pesos[k][c] > 0.0f) m += p.pesos[k][c] * piel[static_cast<size_t>(p.huesos[k][c])];
+                v[k].pos = glm::vec3(m * glm::vec4(p.verticesCPU[k].pos, 1.0f));
+                v[k].normal = glm::normalize(glm::mat3(m) * p.verticesCPU[k].normal);
+                p.min = glm::min(p.min, v[k].pos);
+                p.max = glm::max(p.max, v[k].pos);
+            }
+            glBindBuffer(GL_ARRAY_BUFFER, p.vbo);
+            glBufferSubData(GL_ARRAY_BUFFER, 0, static_cast<GLsizeiptr>(v.size() * sizeof(Vertice)), v.data());
+        }
 }
 
 void Modelo::liberar() {
