@@ -51,6 +51,7 @@ add_executable(TexturizadoCempasuchil
     src/scene/Camino.cpp
     src/scene/Escena.cpp
     src/scene/AltarAprobado.cpp
+    src/scene/Animaciones.cpp
     src/bibliotecas.cpp)
 
 # Generar un esquema compartido con ejecutable de Run definido.

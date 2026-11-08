@@ -20,6 +20,7 @@ El proyecto integra modelado, composición, texturizado, color, iluminación y a
 - Iluminación OpenGL dinámica para cirios, veladoras, faroles y un relleno cálido del altar.
 - Filtrado de luces por caja envolvente, caché de materiales, instanciado y descarte por *frustum*.
 - Skybox nocturno y composición completa del entorno.
+- Nueve animaciones activables con el teclado: tres programadas en OpenGL, tres creadas en Blender y tres con esqueleto (huesos).
 
 ## Tecnologías
 
@@ -27,7 +28,7 @@ El proyecto integra modelado, composición, texturizado, color, iluminación y a
 |---|---|
 | C++17 | Aplicación, escena, interacción y animación procedural |
 | OpenGL / GLSL | Renderizado, materiales, iluminación y actualización de vértices |
-| Blender 5.2 | Modelado, texturizado y animación del papel picado |
+| Blender 5.2 | Modelado, texturizado, animación (papel picado, pétalos, jarra) y esqueletos de los personajes |
 | glTF 2.0 / cgltf | Intercambio y carga de modelos y materiales |
 | CMake | Configuración y compilación multiplataforma |
 | GLFW, GLAD y GLM | Ventana, contexto OpenGL y matemáticas |
@@ -80,7 +81,58 @@ cmake --build build -j
 | `Q / E` | Descender / ascender en modo vuelo |
 | `F2` | Alternar entre renderizado sólido y malla de alambre |
 | `R` | Regresar a la entrada del panteón mirando hacia el altar |
+| `1` a `9` | Iniciar la animación correspondiente (ver la tabla siguiente) |
+| `L` | Apagar o encender los faroles |
 | `Esc` | Cerrar la aplicación |
+
+## Animaciones
+
+El título de la ventana muestra la última animación activada.
+
+| Tecla | Animación | Medio | Técnica |
+|---|---|---|---|
+| `1` | Mariposa monarca | Código | Máquina de estados (reposo, despegue, vuelo, aterrizaje); ruta Catmull-Rom con keyframes; aleteo senoidal en la jerarquía cuerpo-alas |
+| `2` | Recorrido de cámara | Código | Siete keyframes de posición y mira, interpolación Catmull-Rom y tiempo suavizado; `2` lo detiene |
+| `3` | Veladoras | Código | Estados apagado y encendido; encendido progresivo por tramos y parpadeo procedural en `escena.frag` |
+| `4` | Papel picado | Blender | Caché de vértices de 96 cuadros; la tecla calma o reanuda el viento |
+| `5` | Remolino de pétalos | Blender | Keyframes de 720 pétalos horneados en `assets/animaciones/remolino_petalos.pist` |
+| `6` | Jarra sirviendo agua | Blender | Pistas de la jarra, del nivel del agua (plano de recorte) y del chorro |
+| `7` | Visitante 1 | Huesos | Panteonero con armature de siete huesos: camina por el sendero y deja pan de muerto en el altar |
+| `8` | Visitante 2 | Huesos | Calaca que recorre el panteón, observa una tumba, saluda y baila |
+| `9` | Esqueleto bailando | Huesos | Baile de 12 s junto a la portada |
+
+Los personajes se cargan de `assets/models/animados/*.glb` (glTF con skin). Sus clips se evalúan en `Modelo::posar`, que interpola las pistas, calcula las matrices de los huesos y deforma la malla. La trayectoria de cada personaje se define en `src/scene/Animaciones.cpp`.
+
+Las fuentes de Blender y los scripts que regeneran las pistas y los personajes están en `modelos-blender/animaciones/`:
+
+```bash
+cd modelos-blender/animaciones
+blender -b -P exportar_personajes.py      # personajes.blend y assets/models/animados/*.glb
+blender -b remolino_petalos.blend -P exportar_remolino.py
+blender -b jarra_sirviendo_agua.blend -P exportar_jarra.py
+```
+
+## Fotos de la ofrenda (pendiente)
+
+Los portarretratos ya están colocados en el altar; falta poner las fotografías.
+
+| Lugar en el altar | Modelo |
+|---|---|
+| Tercer piso, izquierda / centro / derecha | `portarretrato_1`, `portarretrato_3`, `portarretrato_2` |
+| Primer piso, detrás de los jarrones izquierdo / derecho | `portarretrato_1`, `portarretrato_2` |
+| Segundo piso, detrás de los jarrones izquierdo / derecho | `portarretrato_2`, `portarretrato_1` |
+
+Las posiciones se definen en `src/scene/AltarAprobado.cpp`, en los arreglos `retratos[]` y `complementos[]`.
+
+Para poner una foto:
+
+1. Abrir `modelos-blender/portarretratos/portarretratos_texturizados.blend`.
+2. Seleccionar el objeto `foto` del marco y cambiar el color base de su material por una textura de imagen con la fotografía.
+3. Exportar ese marco como glTF separado (`.gltf` + `.bin` + texturas) sobre `assets/models/propios/portarretratos/portarretrato_N.gltf`.
+
+Un mismo modelo aparece en dos lugares, así que mostraría la misma foto en ambos. Para fotos distintas se pueden usar `portarretrato_4` y `portarretrato_5`, que ya existen y no se usan: basta con cambiar la clave en `AltarAprobado.cpp`.
+
+Sin Blender, también se puede pegar la foto directamente en la textura `assets/textures/portarretratos/portarretrato_N/portarretrato_N_color.png` (2048 × 2048). La foto ocupa la zona con coordenadas UV u de 0.20 a 0.99 y v de 0.01 a 1.00.
 
 ## Opciones de línea de comandos
 
@@ -104,6 +156,8 @@ cmake --build build -j
 │   │ 
 │   ├── models/propios/papel_picado_cache/
 │   │                             caché de 96 frames de Blender
+│   ├── models/animados/          personajes glTF con esqueleto y clips
+│   ├── animaciones/              pistas horneadas desde Blender (.pist)
 │   │ 
 │   ├── textures/                 texturas y materiales
 │   └── skybox/                   entorno panorámico

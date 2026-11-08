@@ -32,6 +32,8 @@ CARACTERÍSTICAS PRINCIPALES
   - Filtrado de luces por caja envolvente, caché de materiales,
     instanciado y descarte por frustum.
   - Skybox nocturno y composición completa del entorno.
+  - Nueve animaciones activables con el teclado: tres programadas en
+    OpenGL, tres creadas en Blender y tres con esqueleto (huesos).
 
 ---------------------------------------------------------------------
 TECNOLOGÍAS
@@ -86,7 +88,41 @@ CONTROLES
   Q / E .............. descender / ascender en modo vuelo
   F2 ................. alternar sólido / malla de alambre
   R .................. regresar a la entrada mirando hacia el altar
+  1 a 9 .............. iniciar una animación (lista siguiente)
+  L .................. apagar o encender los faroles
   Esc ................ cerrar la aplicación
+
+---------------------------------------------------------------------
+ANIMACIONES
+---------------------------------------------------------------------
+  El título de la ventana indica la última animación activada.
+
+  1 Mariposa monarca ...... código: reposo, despegue, vuelo y aterrizaje
+  2 Recorrido de cámara ... código: keyframes con interpolación suave
+                            (2 de nuevo lo detiene)
+  3 Veladoras ............. código: apagado gradual y encendido por
+                            grupos con parpadeo procedural
+  4 Papel picado .......... Blender: calma o reanuda el viento
+  5 Remolino de pétalos ... Blender: 720 pétalos frente al altar
+  6 Jarra sirviendo agua .. Blender: la jarra llena el vaso del petate
+  7 Visitante 1 ........... huesos: lleva pan de muerto al altar
+  8 Visitante 2 ........... huesos: visita una tumba, saluda y baila
+  9 Esqueleto bailando .... huesos: baile junto a la portada
+
+  Fuentes y scripts de exportación: modelos-blender/animaciones/
+
+---------------------------------------------------------------------
+FOTOS DE LA OFRENDA (PENDIENTE)
+---------------------------------------------------------------------
+  Hay siete portarretratos en el altar: tres en el tercer piso y cuatro
+  detrás de los jarrones de los pisos 1 y 2. Sus posiciones están en
+  src/scene/AltarAprobado.cpp (arreglos retratos[] y complementos[]).
+
+  Para poner una foto: abrir
+  modelos-blender/portarretratos/portarretratos_texturizados.blend,
+  cambiar la textura del objeto "foto" del marco y exportarlo como glTF
+  sobre assets/models/propios/portarretratos/portarretrato_N.gltf.
+  Los detalles están en README.md, sección "Fotos de la ofrenda".
 
 ---------------------------------------------------------------------
 OPCIONES DE LÍNEA DE COMANDOS
@@ -113,6 +149,8 @@ ESTRUCTURA DEL REPOSITORIO
   assets/models/libreria/ ....... modelos CC0
   assets/models/propios/
     papel_picado_cache/ ......... caché de 96 frames de Blender
+  assets/models/animados/ ....... personajes con esqueleto (glTF)
+  assets/animaciones/ ........... pistas horneadas desde Blender
   assets/textures/ .............. texturas y materiales
   assets/skybox/ ................ entorno panorámico
   modelos-blender/ .............. fuentes de modelado y animación
