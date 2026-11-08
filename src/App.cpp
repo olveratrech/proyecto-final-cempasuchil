@@ -49,6 +49,19 @@ int App::ejecutar(const Opciones& opciones) {
 
         renderer_.dibujar(escena_.raiz(), camara_, anchoFb_, altoFb_, &escena_.cielo);
 
+        if (!op_.captura.empty()) {
+            std::vector<unsigned char> pixeles(static_cast<size_t>(anchoFb_) * altoFb_ * 3);
+            glPixelStorei(GL_PACK_ALIGNMENT, 1);
+            glReadBuffer(GL_BACK);
+            glReadPixels(0, 0, anchoFb_, altoFb_, GL_RGB, GL_UNSIGNED_BYTE, pixeles.data());
+            std::ofstream salida(op_.captura, std::ios::binary);
+            salida << "P6\n" << anchoFb_ << " " << altoFb_ << "\n255\n";
+            for (int y = altoFb_ - 1; y >= 0; --y)
+                salida.write(reinterpret_cast<const char*>(
+                    pixeles.data() + static_cast<size_t>(y) * anchoFb_ * 3), anchoFb_ * 3);
+            glfwSetWindowShouldClose(ventana_, GLFW_TRUE);
+        }
+
         glfwSwapBuffers(ventana_);
         if(op_.comprobar && ++cuadros==5) {
             const GLenum error=glGetError();

@@ -98,10 +98,10 @@ else()
     set_source_files_properties(src/bibliotecas.cpp PROPERTIES COMPILE_OPTIONS "-w")
 endif()
 
-# Copia assets/ y shaders/ junto al ejecutable para que la carpeta de salida
-# se pueda empaquetar directamente (InstallForge).
+# Copia assets/, shaders/ y la documentación general junto al ejecutable para
+# que la carpeta de salida se pueda empaquetar directamente (InstallForge).
 add_custom_command(TARGET TexturizadoCempasuchil POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/assets $<TARGET_FILE_DIR:TexturizadoCempasuchil>/assets
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/shaders $<TARGET_FILE_DIR:TexturizadoCempasuchil>/shaders
-    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/readme.txt $<TARGET_FILE_DIR:TexturizadoCempasuchil>/readme.txt
-    COMMENT "Copiando assets, shaders y readme.txt junto al ejecutable")
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/README.md $<TARGET_FILE_DIR:TexturizadoCempasuchil>/README.md
+    COMMENT "Copiando assets, shaders y README.md junto al ejecutable")

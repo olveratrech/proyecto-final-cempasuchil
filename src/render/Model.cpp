@@ -176,7 +176,8 @@ Primitiva crearPrimitiva(const std::vector<Vertice>& vertices, const std::vector
 // ---------------------------------------------------------------------------
 // Carga glTF
 // ---------------------------------------------------------------------------
-bool Modelo::cargar(const std::string& rutaArchivo, bool cargarAnimacionPapel) {
+bool Modelo::cargar(const std::string& rutaArchivo, bool cargarAnimacionPapel,
+                    const std::string& materialUVCompleta) {
     ruta = rutaArchivo;
     nombre = fs::u8path(rutaArchivo).stem().u8string();
 
@@ -285,6 +286,21 @@ bool Modelo::cargar(const std::string& rutaArchivo, bool cargarAnimacionPapel) {
                 vs[k].uv = glm::vec2(0.0f);
                 if (anor) cgltf_accessor_read_float(anor, k, &vs[k].normal.x, 3);
                 if (auv) cgltf_accessor_read_float(auv, k, &vs[k].uv.x, 2);
+            }
+            if (!materialUVCompleta.empty() && materiales[static_cast<size_t>(mat)].nombre == materialUVCompleta) {
+                glm::vec3 pmin(1e30f), pmax(-1e30f);
+                for (const Vertice& v : vs) {
+                    pmin = glm::min(pmin, v.pos); pmax = glm::max(pmax, v.pos);
+                }
+                // Solo la lámina frontal: los bordes del portarretrato 2 usan
+                // el mismo material, pero una de sus dimensiones es muy pequeña.
+                if (pmax.x - pmin.x > 0.10f && pmax.y - pmin.y > 0.10f) {
+                    const glm::vec2 rango(pmax.x - pmin.x, pmax.y - pmin.y);
+                    for (Vertice& v : vs) {
+                        v.uv.x = (v.pos.x - pmin.x) / rango.x;
+                        v.uv.y = 1.0f - (v.pos.y - pmin.y) / rango.y;
+                    }
+                }
             }
             std::vector<uint32_t> idx;
             if (pr.indices) {

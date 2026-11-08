@@ -147,7 +147,6 @@ Sin Blender, también se puede pegar la foto directamente en la textura `assets/
 ```text
 ├── CMakeLists.txt
 ├── README.md
-├── readme.txt
 ├── src/                          código C++ de renderizado y escena
 ├── shaders/                      programas GLSL
 ├── assets/

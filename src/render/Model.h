@@ -125,7 +125,8 @@ public:
     float radio() const { return glm::length(max - min) * 0.5f; }
     glm::vec3 centro() const { return (min + max) * 0.5f; }
 
-    bool cargar(const std::string& ruta, bool cargarAnimacionPapel = false);
+    bool cargar(const std::string& ruta, bool cargarAnimacionPapel = false,
+                const std::string& materialUVCompleta = {});
     void actualizarAnimacion(float tiempo);
     static std::unique_ptr<Modelo> procedural(const std::string& nombre, const std::vector<Vertice>& vertices,
                                               const std::vector<uint32_t>& indices, const Material& material);

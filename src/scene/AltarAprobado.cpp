@@ -293,9 +293,9 @@ void Escena::construirAltarAprobado(Nodo* altarAprobado) {
  // Una instancia de cada modelo. Centro retrasado; laterales adelantados e inclinados en planta.
  struct Retrato {const char* clave; float x,z,altura,giro;};
  const Retrato retratos[] = {
-  {"portarretrato_1",-.42f,-.99f,.36f,14},
-  {"portarretrato_3",0,-1.20f,.44f,0},
-  {"portarretrato_2",.42f,-.99f,.36f,-14}
+  {"retrato_p3_izquierdo",-.42f,-.99f,.36f,14},
+  {"retrato_p3_centro",0,-1.20f,.44f,0},
+  {"retrato_p3_derecho",.42f,-.99f,.36f,-14}
  };
  std::vector<HuellaPlato> huellasRetratos;
  constexpr float margenRetrato=.02f;
@@ -371,10 +371,10 @@ void Escena::construirAltarAprobado(Nodo* altarAprobado) {
   float ajuste; // desplazamiento máximo por eje; nunca modifica piezas anteriores.
  };
  const Complemento complementos[] = {
-  {"portarretrato_1","Marco detrás del jarrón P1 izquierdo",1,-1.43f,.98f,.42f,22,.10f},
-  {"portarretrato_2","Marco detrás del jarrón P1 derecho",1,1.43f,.98f,.42f,-22,.10f},
-  {"portarretrato_2","Marco detrás del jarrón P2 izquierdo",2,-1.20f,.30f,.40f,22,.10f},
-  {"portarretrato_1","Marco detrás del jarrón P2 derecho",2,1.20f,.30f,.40f,-22,.10f},
+  {"retrato_p1_izquierdo","Marco detrás del jarrón P1 izquierdo",1,-1.43f,.98f,.42f,22,.10f},
+  {"retrato_p1_derecho","Marco detrás del jarrón P1 derecho",1,1.43f,.98f,.42f,-22,.10f},
+  {"retrato_p2_izquierdo","Marco detrás del jarrón P2 izquierdo",2,-1.20f,.30f,.40f,22,.10f},
+  {"retrato_p2_derecho","Marco detrás del jarrón P2 derecho",2,1.20f,.30f,.40f,-22,.10f},
   {"botella_victoria","Victoria detrás del plato frontal izquierdo",1,-.85f,.89f,.272f,12,.025f},
   {"botella_corona","Corona detrás del plato frontal derecho",1,.85f,.89f,.272f,-13,.025f},
   {"botella_corona","Corona a la derecha del plato lateral izquierdo",1,-1.575f,-.38f,.272f,17,.025f},

@@ -34,11 +34,6 @@ const Ficha kPropios[] = {
     {"veladora_3", "Veladora 3", "", "veladoras/"},
     {"veladora_4", "Veladora 4", "", "veladoras/"},
     {"cabeza_cempasuchil", "Cabeza de cempasúchil", "Selección existente sin tallo", "../derivados/"},
-    {"cirio_1", "Cirio casi nuevo", "", "cirios/"},
-    {"cirio_2", "Cirio poco consumido", "", "cirios/"},
-    {"cirio_3", "Cirio medio", "", "cirios/"},
-    {"cirio_4", "Cirio muy consumido", "", "cirios/"},
-    {"cirio_5", "Cirio remanente", "", "cirios/"},
     {"pan_de_muerto", "Pan de muerto", ""},
     {"calaverita_azucar", "Calaverita de azúcar", ""},
     {"papel_1", "Papel picado 1", "", "papel_picado/"},
@@ -100,11 +95,6 @@ const Ficha kLibreria[] = {
     {"pumpkin-tall", "Calabaza alargada", "Kenney Graveyard Kit (CC0)."},
     {"rocks", "Rocas", "Kenney Graveyard Kit (CC0)."},
     {"candle-multiple", "Velas", "Kenney Graveyard Kit (CC0)."},
-    {"detail-bowl", "Cazuela", "Kenney Graveyard Kit (CC0). Representa la cazuela de mole."},
-    {"detail-plate", "Plato", "Kenney Graveyard Kit (CC0)."},
-    {"character-skeleton", "Esqueleto (calaca)", "Kenney Graveyard Kit (CC0). Personaje jerárquico de 8 nodos."},
-    {"character-ghost", "Ánima", "Kenney Graveyard Kit (CC0). Personaje jerárquico."},
-    {"character-keeper", "Panteonero", "Kenney Graveyard Kit (CC0). Personaje jerárquico de 8 nodos."},
 };
 
 // Generador pseudoaleatorio con semilla fija: la escena es idéntica en cada ejecución.
@@ -173,9 +163,9 @@ bool Escena::cargar() {
 
 bool Escena::cargarModelos() {
     auto cargarUno = [&](const std::string& clave, const std::string& ruta, const Ficha& f, const char* origen,
-                         bool animarPapel = false) {
+                         bool animarPapel = false, const std::string& materialUVCompleta = std::string()) {
         auto m = std::make_unique<Modelo>();
-        if (!m->cargar(ruta, animarPapel)) return false;
+        if (!m->cargar(ruta, animarPapel, materialUVCompleta)) return false;
         catalogo_.push_back({clave, f.titulo, f.descripcion, origen, m.get(), 0});
         modelos_[clave] = std::move(m);
         return true;
@@ -183,6 +173,59 @@ bool Escena::cargarModelos() {
     for (const Ficha& f : kPropios) {
         std::string archivo = std::string("models/propios/") + f.carpeta + f.clave + ".gltf";
         if (!cargarUno(f.clave, rutas::asset(archivo), f, "Propio")) return false;
+    }
+    struct FotoRetrato {
+        const char* clave;
+        const char* modeloBase;
+        const char* materialFoto;
+        const char* archivoFoto;
+    };
+    const FotoRetrato fotosRetrato[] = {
+        {"retrato_p1_izquierdo", "portarretrato_1", "papel.001", "retrato_p1_izquierdo.jpg"},
+        {"retrato_p1_derecho",   "portarretrato_2", "papel.002", "retrato_p1_derecho.jpg"},
+        {"retrato_p2_izquierdo", "portarretrato_2", "papel.002", "retrato_p2_izquierdo.jpg"},
+        {"retrato_p2_derecho",   "portarretrato_1", "papel.001", "retrato_p2_derecho.jpg"},
+        {"retrato_p3_izquierdo", "portarretrato_1", "papel.001", "retrato_p3_izquierdo.jpg"},
+        {"retrato_p3_centro",    "portarretrato_3", "papel",     "retrato_p3_centro.jpg"},
+        {"retrato_p3_derecho",   "portarretrato_2", "papel.002", "retrato_p3_derecho.jpg"},
+    };
+    for (const FotoRetrato& foto : fotosRetrato) {
+        const auto base = std::find_if(std::begin(kPropios), std::end(kPropios),
+                                       [&](const Ficha& f) { return std::string(f.clave) == foto.modeloBase; });
+        if (base == std::end(kPropios)) return false;
+        const std::string rutaModelo = std::string("models/propios/portarretratos/") + foto.modeloBase + ".gltf";
+        Ficha ficha{foto.clave, "Portarretrato con fotografía", "Fotografía individual del altar"};
+        if (!cargarUno(foto.clave, rutas::asset(rutaModelo), ficha, "Propio con fotografía",
+                       false, foto.materialFoto)) return false;
+        Modelo* retrato = modelo(foto.clave);
+        auto material = std::find_if(retrato->materiales.begin(), retrato->materiales.end(),
+                                     [&](const Material& m) { return m.nombre == foto.materialFoto; });
+        if (material == retrato->materiales.end()) {
+            registro::error("No se encontró el material %s en %s", foto.materialFoto, foto.modeloBase);
+            return false;
+        }
+        const GLuint textura = cargarTextura2D(
+            rutas::asset(std::string("textures/fotografias/procesadas/") + foto.archivoFoto), true, false);
+        if (!textura) {
+            registro::error("No se pudo cargar la fotografía %s", foto.archivoFoto);
+            return false;
+        }
+        const int materialOriginal = static_cast<int>(std::distance(retrato->materiales.begin(), material));
+        Material materialFotografia = *material;
+        materialFotografia.nombre = std::string(foto.materialFoto) + " · fotografía";
+        materialFotografia.texturaColor = textura;
+        materialFotografia.colorBase = glm::vec4(1.0f);
+        materialFotografia.metalico = 0.0f;
+        materialFotografia.rugosidad = 0.72f;
+        const int indiceFoto = static_cast<int>(retrato->materiales.size());
+        retrato->materiales.push_back(materialFotografia);
+        for (Malla& malla : retrato->mallas)
+            for (Primitiva& primitiva : malla.primitivas) {
+                const glm::vec3 dimensiones = primitiva.max - primitiva.min;
+                if (primitiva.material == materialOriginal && dimensiones.x > 0.10f && dimensiones.y > 0.10f)
+                    primitiva.material = indiceFoto;
+            }
+        retrato->texturas.push_back(textura);
     }
     for (int i = 1; i <= 6; ++i) {
         const std::string base = "papel_" + std::to_string(i);
