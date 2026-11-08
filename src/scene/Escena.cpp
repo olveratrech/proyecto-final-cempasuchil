@@ -305,7 +305,7 @@ int Escena::totalModelosDistintos() const {
 
 void Escena::actualizarMariposas(float dt, const glm::vec3& ojo) {
     for (auto& mariposa : mariposas_) mariposa.actualizar(dt, ojo);
-    tiempoPapel_ += std::clamp(dt, 0.0f, 0.1f);
+    tiempoPapel_ += std::clamp(dt, 0.0f, 0.1f) * velocidadPapel;
     for (const char* clave : {"papel_animado_1", "papel_animado_2", "papel_animado_3",
                               "papel_animado_4", "papel_animado_5", "papel_animado_6"})
         if (Modelo* m = modelo(clave)) m->actualizarAnimacion(tiempoPapel_);

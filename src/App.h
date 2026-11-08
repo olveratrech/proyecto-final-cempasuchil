@@ -2,6 +2,7 @@
 #pragma once
 #include "render/Renderer.h"
 #include "scene/Camera.h"
+#include "scene/Animaciones.h"
 #include "scene/Escena.h"
 #include <string>
 struct GLFWwindow;
@@ -27,6 +28,7 @@ private:
     GLFWwindow* ventana_=nullptr;
     Opciones op_;
     Escena escena_;
+    Animaciones animaciones_;
     Renderer renderer_;
     Camara camara_;
     bool ratonActivo_=false;

@@ -10,6 +10,7 @@
 #include "render/Model.h"
 
 #include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 
 #include <memory>
 #include <string>
@@ -26,6 +27,9 @@ public:
 
     void agregar(const glm::mat4& m, const glm::vec4& tinte = glm::vec4(1.0f));
     void subir();  // crea el búfer de instancias y los VAOs
+    // Reescribe matrices y tintes en el búfer ya creado por subir() y recalcula
+    // la caja envolvente. Para lotes animados cuyo número de instancias no cambia.
+    void actualizarTransformaciones();
     void liberar();
     ~Lote() { liberar(); }
 
@@ -47,6 +51,14 @@ public:
     glm::vec3 posicion{0.0f};
     glm::vec3 rotacion{0.0f};  // grados, orden X -> Y -> Z
     glm::vec3 escala{1.0f};
+    // Nodos animados por pistas o esqueletos: la rotación se toma de este
+    // cuaternión en lugar de los ángulos de Euler (evita bloqueo de cardán).
+    bool usarOrientacion = false;
+    glm::quat orientacion{1.0f, 0.0f, 0.0f, 0.0f};
+    // Plano de recorte en coordenadas de mundo (n.xyz, d): se descartan los
+    // fragmentos con dot(n, p) + d > 0. Solo afecta a la malla de este nodo.
+    bool recortar = false;
+    glm::vec4 planoCorte{0.0f, 1.0f, 0.0f, 0.0f};
 
     const Modelo* modelo = nullptr;  // modelo al que pertenece la malla
     int malla = -1;                  // índice de malla dibujada en este nodo
