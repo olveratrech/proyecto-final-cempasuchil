@@ -45,6 +45,7 @@ int App::ejecutar(const Opciones& opciones) {
         }
         procesarEntrada(dt);
         escena_.actualizarMariposas(dt, camara_.ojo());
+        animaciones_.actualizar(dt, camara_, renderer_);
 
         renderer_.dibujar(escena_.raiz(), camara_, anchoFb_, altoFb_, &escena_.cielo);
 
@@ -144,7 +145,7 @@ bool App::iniciar() {
         op_.ancho = std::max(960, w * 4 / 5);
         op_.alto = std::max(540, h * 4 / 5);
     }
-    ventana_ = glfwCreateWindow(op_.ancho, op_.alto, "Cempasúchil | Texturizado",
+    ventana_ = glfwCreateWindow(op_.ancho, op_.alto, "Cempasúchil | Proyecto final",
                                nullptr, nullptr);
     if (!ventana_) {
         registro::fatal("No se pudo crear la ventana. Se requiere una tarjeta gráfica compatible con OpenGL 3.3.");
@@ -170,6 +171,7 @@ bool App::iniciar() {
         registro::fatal("No se pudieron cargar los modelos (carpeta assets/).");
         return false;
     }
+    animaciones_.cargar(escena_);
     glfwSetKeyCallback(ventana_, alTeclear);
     glfwSetScrollCallback(ventana_, alDesplazar);
     aplicarVista(op_.vistaInicial);
@@ -177,6 +179,7 @@ bool App::iniciar() {
 }
 
 void App::terminar() {
+    animaciones_.liberar();
     escena_.liberar();
     renderer_.liberar();
     if (ventana_) glfwDestroyWindow(ventana_);
@@ -193,6 +196,7 @@ void App::procesarEntrada(float dt) {
     glfwGetCursorPos(ventana_, &x, &y);
     float dx = float(x - ultimoX_), dy = float(y - ultimoY_);
     ultimoX_ = x; ultimoY_ = y;
+    if (animaciones_.recorridoActivo()) return;  // el recorrido conduce la cámara
     if (ratonActivo_) camara_.girar(dx, dy);
     auto tecla = [&](int k) { return glfwGetKey(ventana_, k) == GLFW_PRESS; };
     glm::vec3 d(0.0f);
@@ -225,7 +229,11 @@ void App::alTeclear(GLFWwindow* v, int tecla, int codigo, int accion, int mods) 
             registro::info("Modo de navegación: %s", a.camara_.vuelo ? "vuelo" : "caminata");
             break;
         case GLFW_KEY_R: a.aplicarVista(1); break;
-        default: break;
+        default:
+            a.animaciones_.tecla(tecla);
+            if (!a.animaciones_.estado().empty())
+                glfwSetWindowTitle(v, ("Cempasúchil | " + a.animaciones_.estado()).c_str());
+            break;
     }
 }
 
