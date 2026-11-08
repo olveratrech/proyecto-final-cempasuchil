@@ -37,7 +37,7 @@ void Lote::subir() {
     glGenBuffers(1, &vbo_);
     glBindBuffer(GL_ARRAY_BUFFER, vbo_);
     glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(datos.size() * sizeof(Instancia)), datos.data(),
-                 GL_STATIC_DRAW);
+                 GL_DYNAMIC_DRAW);
 
     // Un VAO por primitiva que combina el búfer de vértices del modelo con el de
     // instancias (atributos 3-6: matriz por columnas, 7: tinte; divisor = 1).
@@ -66,6 +66,31 @@ void Lote::subir() {
             vaos_[e].push_back(vao);
         }
     }
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void Lote::actualizarTransformaciones() {
+    if (Modelo::soloCPU || !vbo_ || !modelo) return;
+    struct Instancia {
+        glm::mat4 m;
+        glm::vec4 tinte;
+    };
+    std::vector<Instancia> datos(transformaciones.size());
+    min = glm::vec3(1e30f);
+    max = glm::vec3(-1e30f);
+    // Para la caja basta el centro de cada instancia ampliado por el radio del
+    // modelo escalado: es conservadora y evita transformar ocho esquinas.
+    const float radio = modelo->radio();
+    for (size_t i = 0; i < datos.size(); ++i) {
+        datos[i] = {transformaciones[i], tintes[i]};
+        const glm::mat4& m = transformaciones[i];
+        const float escala = glm::length(glm::vec3(m[0]));
+        const glm::vec3 centro = glm::vec3(m * glm::vec4(modelo->centro(), 1.0f));
+        min = glm::min(min, centro - glm::vec3(radio * escala));
+        max = glm::max(max, centro + glm::vec3(radio * escala));
+    }
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, static_cast<GLsizeiptr>(datos.size() * sizeof(Instancia)), datos.data());
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
@@ -108,7 +133,7 @@ void Nodo::colocar(const glm::vec3& p, const glm::vec3& rotGrados, const glm::ve
 glm::mat4 Nodo::matrizLocal() const {
     // M = T * R * S  (primero escala, luego rotación y al final traslación)
     glm::mat4 T = glm::translate(glm::mat4(1.0f), posicion);
-    glm::mat4 R = glm::mat4_cast(glm::quat(glm::radians(rotacion)));
+    glm::mat4 R = glm::mat4_cast(usarOrientacion ? orientacion : glm::quat(glm::radians(rotacion)));
     glm::mat4 S = glm::scale(glm::mat4(1.0f), escala);
     return T * R * S;
 }

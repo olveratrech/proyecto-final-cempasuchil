@@ -62,6 +62,7 @@ public:
 
     Camino camino;
     Skybox cielo;
+    float velocidadPapel = 1.0f;  // 0 detiene el viento del papel picado (animación 4)
 
 private:
     bool cargarModelos();
