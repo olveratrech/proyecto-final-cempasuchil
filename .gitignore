@@ -34,14 +34,30 @@ registro.txt
 *.log
 *.tmp
 
-# En doc/ se versionan las fuentes, imágenes y PDF finales; sólo se excluyen
-# los auxiliares regenerables de LaTeX.
-/doc/**/*.aux
-/doc/**/*.fdb_latexmk
-/doc/**/*.fls
-/doc/**/*.out
-/doc/**/*.synctex.gz
-/doc/**/*.toc
+# En doc/ sólo se versionan los PDF finales. Se omiten las fuentes LaTeX,
+# las imágenes y cualquier archivo auxiliar o temporal de compilación.
+/doc/**
+!/doc/
+!/doc/**/
+!/doc/**/*.pdf
+
+# Archivos auxiliares de LaTeX, incluso si se generan fuera de doc/.
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
 
 # Archivos locales del sistema y de edición.
 .DS_Store
