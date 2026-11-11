@@ -73,3 +73,7 @@ core.*
 *.blend2
 __pycache__/
 *.pyc
+
+# Logotipos auxiliares usados para compilar LaTeX.
+/doc/**/UNAM.pdf
+/doc/**/UNAM_INGENIERIA.pdf
