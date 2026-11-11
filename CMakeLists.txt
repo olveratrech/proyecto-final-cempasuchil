@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16...3.31)
 
 project(TexturizadoCempasuchil
     VERSION 0.2.0
-    DESCRIPTION "Camino de Cempasuchil - Proyecto final CGeIHC, FI UNAM"
+    DESCRIPTION "CEMPASÚCHIL - Proyecto final CGeIHC, FI UNAM"
     LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -81,6 +81,7 @@ if(MSVC)
     target_compile_definitions(TexturizadoCempasuchil PRIVATE _CRT_SECURE_NO_WARNINGS NOMINMAX)
     # aplicación de ventana (sin consola); los mensajes se guardan en registro.txt
     set_target_properties(TexturizadoCempasuchil PROPERTIES
+        OUTPUT_NAME "CEMPASUCHIL"
         WIN32_EXECUTABLE TRUE
         VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
     target_link_options(TexturizadoCempasuchil PRIVATE /ENTRY:mainCRTStartup)
@@ -105,3 +106,46 @@ add_custom_command(TARGET TexturizadoCempasuchil POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/shaders $<TARGET_FILE_DIR:TexturizadoCempasuchil>/shaders
     COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/README.md $<TARGET_FILE_DIR:TexturizadoCempasuchil>/README.md
     COMMENT "Copiando assets, shaders y README.md junto al ejecutable")
+
+# --------------------------------------------------------------------------
+# Instalador de Windows (CPack + NSIS)
+# --------------------------------------------------------------------------
+# Estas reglas crean una instalación autocontenida. El usuario final no
+# necesita CMake, Visual Studio ni las fuentes del proyecto.
+if(WIN32)
+    install(TARGETS TexturizadoCempasuchil
+        RUNTIME DESTINATION .)
+    install(DIRECTORY assets
+        DESTINATION .)
+    install(DIRECTORY shaders
+        DESTINATION .)
+    install(FILES
+        "${CMAKE_SOURCE_DIR}/README.txt"
+        "${CMAKE_SOURCE_DIR}/LICENSE"
+        DESTINATION .)
+
+    set(CPACK_GENERATOR "NSIS")
+    set(CPACK_PACKAGE_NAME "CEMPASUCHIL")
+    set(CPACK_PACKAGE_VENDOR "Equipo 8 - Facultad de Ingeniería, UNAM")
+    set(CPACK_PACKAGE_DESCRIPTION_SUMMARY
+        "Ofrenda, memoria y tradición - experiencia interactiva de Día de Muertos")
+    set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
+    set(CPACK_PACKAGE_INSTALL_DIRECTORY "CEMPASUCHIL")
+    set(CPACK_PACKAGE_FILE_NAME
+        "CEMPASUCHIL-Setup-${PROJECT_VERSION}-win64")
+    set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE")
+
+    set(CPACK_NSIS_DISPLAY_NAME "CEMPASÚCHIL")
+    set(CPACK_NSIS_PACKAGE_NAME "CEMPASÚCHIL")
+    set(CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES64")
+    set(CPACK_NSIS_EXECUTABLES_DIRECTORY ".")
+    set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
+    set(CPACK_NSIS_MUI_FINISHPAGE_RUN "CEMPASUCHIL.exe")
+    set(CPACK_PACKAGE_EXECUTABLES
+        "CEMPASUCHIL" "CEMPASÚCHIL")
+    set(CPACK_CREATE_DESKTOP_LINKS "CEMPASUCHIL")
+    set(CPACK_NSIS_MENU_LINKS
+        "README.txt" "Instrucciones de uso")
+
+    include(CPack)
+endif()

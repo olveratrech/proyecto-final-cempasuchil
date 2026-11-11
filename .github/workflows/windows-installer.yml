@@ -1,0 +1,81 @@
+name: Generar instalador de Windows
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  windows-installer:
+    name: Compilar y empaquetar CEMPASUCHIL
+    runs-on: windows-2022
+    timeout-minutes: 60
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar NSIS
+        shell: powershell
+        run: choco install nsis --no-progress -y
+
+      - name: Configurar CMake
+        shell: powershell
+        run: >-
+          cmake -S . -B build-windows
+          -G "Visual Studio 17 2022"
+          -A x64
+
+      - name: Compilar en modo Release
+        shell: powershell
+        run: cmake --build build-windows --config Release --parallel
+
+      - name: Verificar el ejecutable y los recursos
+        shell: powershell
+        run: |
+          $output = "build-windows/Release"
+          $required = @(
+            "$output/CEMPASUCHIL.exe",
+            "$output/assets",
+            "$output/shaders",
+            "$output/README.md",
+            "README.txt"
+          )
+          foreach ($path in $required) {
+            if (-not (Test-Path $path)) {
+              throw "No se encontró el elemento requerido: $path"
+            }
+          }
+
+      - name: Generar el instalador NSIS
+        shell: powershell
+        run: |
+          New-Item -ItemType Directory -Force -Path dist | Out-Null
+          cpack --config build-windows/CPackConfig.cmake `
+            -C Release -G NSIS -B dist --verbose
+
+      - name: Verificar el instalador
+        shell: powershell
+        run: |
+          $installers = @(Get-ChildItem dist -Filter "*.exe")
+          if ($installers.Count -ne 1) {
+            throw "Se esperaba un instalador .exe y se encontraron $($installers.Count)."
+          }
+          Get-FileHash $installers[0].FullName -Algorithm SHA256 |
+            Format-List | Out-File -Encoding utf8 "dist/SHA256.txt"
+          Get-ChildItem dist | Format-Table Name, Length
+
+      - name: Publicar el instalador
+        uses: actions/upload-artifact@v4
+        with:
+          name: CEMPASUCHIL-Windows-Installer
+          path: |
+            dist/*.exe
+            dist/SHA256.txt
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
