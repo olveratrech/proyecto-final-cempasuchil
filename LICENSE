@@ -1,121 +1,106 @@
-Creative Commons Legal Code
+LICENCIA DE USO EDUCATIVO Y ACADÉMICO — CEMPASÚCHIL
+Versión 1.0, 2026
 
-CC0 1.0 Universal
+Copyright (c) 2026 Equipo 8
 
-    CREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE
-    LEGAL SERVICES. DISTRIBUTION OF THIS DOCUMENT DOES NOT CREATE AN
-    ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS
-    INFORMATION ON AN "AS-IS" BASIS. CREATIVE COMMONS MAKES NO WARRANTIES
-    REGARDING THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS
-    PROVIDED HEREUNDER, AND DISCLAIMS LIABILITY FOR DAMAGES RESULTING FROM
-    THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS PROVIDED
-    HEREUNDER.
+Autores:
+  Basilio Illescas Andrés
+  Cruz Macedo Samuel Santiago
+  Pérez Olvera Alexis Abraham
+  Trejo Olvera Emmanuel
 
-Statement of Purpose
+Proyecto desarrollado con fines académicos para la asignatura de
+Computación Gráfica e Interacción Humano-Computadora de la Universidad
+Nacional Autónoma de México (UNAM).
 
-The laws of most jurisdictions throughout the world automatically confer
-exclusive Copyright and Related Rights (defined below) upon the creator
-and subsequent owner(s) (each and all, an "owner") of an original work of
-authorship and/or a database (each, a "Work").
+1. OBJETO
 
-Certain owners wish to permanently relinquish those rights to a Work for
-the purpose of contributing to a commons of creative, cultural and
-scientific works ("Commons") that the public can reliably and without fear
-of later claims of infringement build upon, modify, incorporate in other
-works, reuse and redistribute as freely as possible in any form whatsoever
-and for any purposes, including without limitation commercial purposes.
-These owners may contribute to the Commons to promote the ideal of a free
-culture and the further production of creative, cultural and scientific
-works, or to gain reputation or greater distribution for their Work in
-part through the use and efforts of others.
+Esta licencia regula el uso del código fuente, modelos, escenas, animaciones,
+texturas, documentación y demás materiales originales que integran el proyecto
+"CEMPASÚCHIL" (en adelante, "el Proyecto"), salvo aquellos componentes que se
+identifiquen como obras o recursos de terceros.
 
-For these and/or other purposes and motivations, and without any
-expectation of additional consideration or compensation, the person
-associating CC0 with a Work (the "Affirmer"), to the extent that he or she
-is an owner of Copyright and Related Rights in the Work, voluntarily
-elects to apply CC0 to the Work and publicly distribute the Work under its
-terms, with knowledge of his or her Copyright and Related Rights in the
-Work and the meaning and intended legal effect of CC0 on those rights.
+2. AUTORIZACIÓN PARA USO EDUCATIVO
 
-1. Copyright and Related Rights. A Work made available under CC0 may be
-protected by copyright and related or neighboring rights ("Copyright and
-Related Rights"). Copyright and Related Rights include, but are not
-limited to, the following:
+Se concede, sin costo, un permiso personal, no exclusivo y revocable para:
 
-  i. the right to reproduce, adapt, distribute, perform, display,
-     communicate, and translate a Work;
- ii. moral rights retained by the original author(s) and/or performer(s);
-iii. publicity and privacy rights pertaining to a person's image or
-     likeness depicted in a Work;
- iv. rights protecting against unfair competition in regards to a Work,
-     subject to the limitations in paragraph 4(a), below;
-  v. rights protecting the extraction, dissemination, use and reuse of data
-     in a Work;
- vi. database rights (such as those arising under Directive 96/9/EC of the
-     European Parliament and of the Council of 11 March 1996 on the legal
-     protection of databases, and under any national implementation
-     thereof, including any amended or successor version of such
-     directive); and
-vii. other similar, equivalent or corresponding rights throughout the
-     world based on applicable law or treaty, and any national
-     implementations thereof.
+  a) descargar, ejecutar, estudiar y evaluar el Proyecto;
+  b) utilizarlo en clases, prácticas, demostraciones, exposiciones y actividades
+     de investigación sin fines de lucro;
+  c) copiarlo y modificarlo con propósitos de aprendizaje, enseñanza o
+     experimentación académica; y
+  d) distribuir copias o versiones modificadas únicamente en contextos
+     educativos y sin fines comerciales.
 
-2. Waiver. To the greatest extent permitted by, but not in contravention
-of, applicable law, Affirmer hereby overtly, fully, permanently,
-irrevocably and unconditionally waives, abandons, and surrenders all of
-Affirmer's Copyright and Related Rights and associated claims and causes
-of action, whether now known or unknown (including existing as well as
-future claims and causes of action), in the Work (i) in all territories
-worldwide, (ii) for the maximum duration provided by applicable law or
-treaty (including future time extensions), (iii) in any current or future
-medium and for any number of copies, and (iv) for any purpose whatsoever,
-including without limitation commercial, advertising or promotional
-purposes (the "Waiver"). Affirmer makes the Waiver for the benefit of each
-member of the public at large and to the detriment of Affirmer's heirs and
-successors, fully intending that such Waiver shall not be subject to
-revocation, rescission, cancellation, termination, or any other legal or
-equitable action to disrupt the quiet enjoyment of the Work by the public
-as contemplated by Affirmer's express Statement of Purpose.
+3. CONDICIONES
 
-3. Public License Fallback. Should any part of the Waiver for any reason
-be judged legally invalid or ineffective under applicable law, then the
-Waiver shall be preserved to the maximum extent permitted taking into
-account Affirmer's express Statement of Purpose. In addition, to the
-extent the Waiver is so judged Affirmer hereby grants to each affected
-person a royalty-free, non transferable, non sublicensable, non exclusive,
-irrevocable and unconditional license to exercise Affirmer's Copyright and
-Related Rights in the Work (i) in all territories worldwide, (ii) for the
-maximum duration provided by applicable law or treaty (including future
-time extensions), (iii) in any current or future medium and for any number
-of copies, and (iv) for any purpose whatsoever, including without
-limitation commercial, advertising or promotional purposes (the
-"License"). The License shall be deemed effective as of the date CC0 was
-applied by Affirmer to the Work. Should any part of the License for any
-reason be judged legally invalid or ineffective under applicable law, such
-partial invalidity or ineffectiveness shall not invalidate the remainder
-of the License, and in such case Affirmer hereby affirms that he or she
-will not (i) exercise any of his or her remaining Copyright and Related
-Rights in the Work or (ii) assert any associated claims and causes of
-action with respect to the Work, in either case contrary to Affirmer's
-express Statement of Purpose.
+Toda copia o versión modificada del Proyecto deberá:
 
-4. Limitations and Disclaimers.
+  a) conservar este archivo de licencia y los avisos de autoría;
+  b) reconocer de forma visible al Equipo 8 y el nombre del Proyecto;
+  c) indicar claramente los cambios realizados y evitar presentarlos como obra
+     original de los autores; y
+  d) mantener, para los materiales originales del Proyecto, condiciones de uso
+     educativo y no comercial equivalentes a las de esta licencia.
 
- a. No trademark or patent rights held by Affirmer are waived, abandoned,
-    surrendered, licensed or otherwise affected by this document.
- b. Affirmer offers the Work as-is and makes no representations or
-    warranties of any kind concerning the Work, express, implied,
-    statutory or otherwise, including without limitation warranties of
-    title, merchantability, fitness for a particular purpose, non
-    infringement, or the absence of latent or other defects, accuracy, or
-    the present or absence of errors, whether or not discoverable, all to
-    the greatest extent permissible under applicable law.
- c. Affirmer disclaims responsibility for clearing rights of other persons
-    that may apply to the Work or any use thereof, including without
-    limitation any person's Copyright and Related Rights in the Work.
-    Further, Affirmer disclaims responsibility for obtaining any necessary
-    consents, permissions or other rights required for any use of the
-    Work.
- d. Affirmer understands and acknowledges that Creative Commons is not a
-    party to this document and has no duty or obligation with respect to
-    this CC0 or use of the Work.
+El uso del Proyecto como referencia académica deberá observar las reglas de
+citación, integridad académica y prevención del plagio aplicables en la
+institución correspondiente.
+
+4. USOS NO AUTORIZADOS
+
+Sin autorización previa y por escrito de los autores, no se permite:
+
+  a) vender, rentar, sublicenciar o explotar comercialmente el Proyecto o una
+     obra derivada;
+  b) incluirlo en productos, servicios, publicidad o actividades con fines de
+     lucro;
+  c) retirar u ocultar créditos, avisos legales o referencias de autoría;
+  d) atribuirse la autoría total o parcial del trabajo original; ni
+  e) utilizar el nombre de la UNAM, de la asignatura, del profesor o de los
+     autores para sugerir respaldo institucional o comercial.
+
+Para cualquier uso comercial o distinto de los aquí autorizados deberá
+solicitarse permiso expreso a los autores por medio de los responsables del
+repositorio.
+
+5. COMPONENTES Y RECURSOS DE TERCEROS
+
+Esta licencia se aplica exclusivamente a las aportaciones originales cuyos
+derechos correspondan a los autores del Proyecto. No modifica ni sustituye las
+licencias de bibliotecas, modelos, texturas, tipografías, fotografías u otros
+recursos de terceros incluidos o referenciados.
+
+Entre estos componentes se encuentran bibliotecas como GLFW, GLAD, GLM, cgltf
+y stb, así como recursos identificados de Kenney o Poly Haven. Cada componente
+de terceros conserva su licencia, aviso y condiciones originales, incluidos los
+recursos distribuidos bajo CC0 u otras licencias permisivas.
+
+Las fotografías, nombres, imágenes y semejanzas de las personas representadas
+en la ofrenda pueden estar sujetas a derechos de autor, imagen, personalidad o
+publicidad independientes. Su inclusión en este proyecto académico no concede
+derechos para reutilizarlas fuera del contexto permitido por sus respectivos
+titulares y por la legislación aplicable.
+
+Cuando exista conflicto entre esta licencia y la licencia de un componente de
+terceros, prevalecerán para dicho componente sus términos originales.
+
+6. AUSENCIA DE GARANTÍA
+
+EL PROYECTO SE PROPORCIONA "TAL CUAL", SIN GARANTÍAS EXPRESAS O IMPLÍCITAS DE
+NINGÚN TIPO, INCLUIDAS, ENTRE OTRAS, LAS GARANTÍAS DE FUNCIONAMIENTO,
+COMPATIBILIDAD, IDONEIDAD PARA UN PROPÓSITO PARTICULAR O AUSENCIA DE ERRORES.
+
+EN LA MEDIDA PERMITIDA POR LA LEGISLACIÓN APLICABLE, LOS AUTORES NO SERÁN
+RESPONSABLES POR DAÑOS, PÉRDIDAS O RECLAMACIONES DERIVADOS DEL USO,
+MODIFICACIÓN, DISTRIBUCIÓN O IMPOSIBILIDAD DE USO DEL PROYECTO.
+
+7. NATURALEZA DE LA LICENCIA
+
+Esta es una licencia educativa personalizada con restricción de uso comercial;
+por ello, no debe interpretarse como una licencia de software libre o de código
+abierto aprobada por la Free Software Foundation u Open Source Initiative.
+
+El ejercicio de cualquiera de los permisos anteriores implica la aceptación
+de estos términos. Los derechos no concedidos expresamente quedan reservados
+por sus respectivos titulares.

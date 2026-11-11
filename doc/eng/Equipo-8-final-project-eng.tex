@@ -83,21 +83,6 @@
 	columns=fullflexible
 }
 
-% Placeholder box for screenshots
-\newcommand{\capturapendiente}[2]{%
-	\begin{figure}[H]
-		\centering
-		\fbox{%
-			\parbox[c][5.2cm][c]{0.88\textwidth}{%
-				\centering
-				\textbf{Pending Capture}\\[0.3cm]
-				\textit{#1}%
-			}%
-		}
-		\caption{#2}
-	\end{figure}
-}
-
 %% Header and Footer %%
 \pagestyle{fancy}  
 \fancyhf{} 
@@ -136,19 +121,18 @@
 				\includegraphics[width=\textwidth]{UNAM_INGENIERIA}
 			\end{minipage}
 			
-			\vspace{1cm}
-			
-			\begin{tikzpicture}
-				\draw[black, line width=1.5pt] (2\textwidth,0) -- (\textwidth,0);
-			\end{tikzpicture}
-			
-			\vspace{1cm}
-			
-			{\color{black}\fontsize{18}{20}\selectfont
-				\textbf{CEMPASÚCHIL: OFFERING, MEMORY, AND TRADITION} \\[0.3cm]
-				{\fontsize{14}{16}\selectfont FINAL PROJECT} \\
-				\vspace{1.5cm}
-			}
+			\vspace{0.8cm}
+			\rule{\textwidth}{1.2pt}
+			\vspace{0.5cm}
+
+			{\fontsize{25}{28}\selectfont\textbf{FINAL PROJECT}}\\[0.8cm]
+
+			\includegraphics[width=\textwidth,keepaspectratio]{../images/cempasuchil.png}\\[0.8cm]
+
+			{\fontsize{17}{20}\selectfont\textbf{TECHNICAL AND USER DOCUMENTATION}}\\[1cm]
+
+			\rule{\textwidth}{1.2pt}
+			\vspace{0.8cm}
 			
 			{\color{black}\fontsize{14}{16}\selectfont
 				\begin{tabular}{l r l}
@@ -164,7 +148,7 @@
 			\vfill
 			
 			{\color{black}\fontsize{12}{14}\selectfont
-				Ciudad Universitaria, CDMX \hfill Delivery date: \today
+				Ciudad Universitaria, Mexico City \hfill \today
 			}
 		\end{center}
 	\end{titlepage}
@@ -173,28 +157,45 @@
 	\thispagestyle{empty}
 	\begin{center}
 		{\fontsize{16}{20}\selectfont\textbf{EVIDENCE SHEET}}\\[0.8cm]
-		{\fontsize{14}{18}\selectfont\textbf{Cempasúchil: Offering, Memory, and Tradition}}\\[0.3cm]
-		{\large Final project, Computer Graphics and Human-Computer Interaction}\\[1.2cm]
-		\renewcommand{\arraystretch}{2.0}
-		\begin{tabular}{p{8.5cm}p{5.5cm}}
+		{\fontsize{14}{18}\selectfont\textbf{CEMPASÚCHIL: Offering, Memory, and Tradition}}\\[0.3cm]
+		{\large Final project, Computer Graphics and Human-Computer Interaction}\\[0.3cm]
+		{\large Team 8 --- Group 04}\\[1.2cm]
+		\renewcommand{\arraystretch}{1.6}
+		\setlength{\tabcolsep}{12pt}
+		\begin{tabular}{>{\arraybackslash}p{8.5cm}>{\centering\arraybackslash}p{5.5cm}}
 			\toprule
 			\textbf{Student} & \textbf{Student ID (número de cuenta)}\\
 			\midrule
-			Basilio Illescas Andrés & \rule{4.5cm}{0.4pt}\\
-			Cruz Macedo Samuel Santiago & \rule{4.5cm}{0.4pt}\\
-			Pérez Olvera Alexis Abraham & \rule{4.5cm}{0.4pt}\\
-			Trejo Olvera Emmanuel & \rule{4.5cm}{0.4pt}\\
+			Basilio Illescas Andrés & 321137135\\
+			Cruz Macedo Samuel Santiago & 424065465\\
+			Pérez Olvera Alexis Abraham & 321150503\\
+			Trejo Olvera Emmanuel & 424138220\\
 			\bottomrule
 		\end{tabular}
 	\end{center}
 
+	\vfill
+
+	\begin{center}
+		\textbf{Professor:} Eng. José Ramón Pérez Athié\\[0.3cm]
+		\textbf{Semester:} 2027-1
+	\end{center}
+
 	\newpage
 	\tableofcontents
-	\newpage
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{section}{List of Figures}
+	\listoffigures
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{section}{List of Tables}
+	\listoftables
+	\clearpage
 
 	\section*{Abstract}
 	\addcontentsline{toc}{section}{Abstract}
-	Cempasúchil is an interactive graphics application written in C++17 with OpenGL 3.3 and GLSL that recreates a Day of the Dead night. The visitor walks through a cemetery, follows a petal path lined with lanterns, votive candles, and papel picado, and reaches a three-tier offering in the porch of an adobe house. The system covers the full graphics pipeline seen in the course: hierarchical modeling in Blender, glTF 2.0 interchange, texturing with color, roughness, and normal maps, Phong lighting with point lights, a Fresnel approximation for glass and water, a skybox, and nine keyboard-triggered animations. Three animations are programmed directly in OpenGL, three were created in Blender and are played back from exported tracks, and three use rigged characters whose clips are evaluated with linear blend skinning. The result meets the minimum requirements of the specification and builds on macOS, Windows, and Linux.
+	Cempasúchil is an interactive graphics application written in C++17 with OpenGL 3.3 and GLSL that recreates a \textit{Día de Muertos} night. The visitor walks through a cemetery, follows a petal path lined with lanterns, votive candles, and \textit{papel picado}, and reaches a three-tier \textit{ofrenda}, a ritual altar offering, on the porch of an adobe house. The system covers the full graphics pipeline seen in the course: hierarchical modeling in Blender, glTF 2.0 interchange, texturing with color, roughness, and normal maps, Phong lighting with point lights, a Fresnel approximation for glass and water, a skybox, and nine keyboard-triggered animations. Three animations are programmed directly in OpenGL, three were created in Blender and are played back from exported tracks, and three use rigged characters whose clips are evaluated with linear blend skinning. The result meets the minimum requirements of the specification and builds on macOS, Windows, and Linux.
 
 	\section{Introduction}
 	The Day of the Dead is one of the most representative celebrations in Mexico. In 2008 UNESCO inscribed the indigenous festivity dedicated to the dead on the Representative List of the Intangible Cultural Heritage of Humanity (UNESCO, 2008). Its visual elements (the cempasúchil flower, papel picado, votive candles, the tiered offering, and the petal path that guides the souls) suit a graphics project well because they combine repeated geometry, translucent materials, small light sources, and motion.
@@ -203,7 +204,23 @@
 
 	For animation the project uses three families of techniques described in real-time rendering literature (Akenine-Möller et al., 2018; Gregory, 2018): basic transformations applied to a hierarchy, keyframe interpolation, and procedural animation. Trajectories are interpolated with Catmull-Rom splines (Catmull and Rom, 1974) in their centripetal variant, which avoids loops (Yuksel et al., 2011), and rotations with spherical quaternion interpolation (Shoemake, 1985). Rigged characters are deformed with per-vertex linear blend skinning, the technique introduced by Magnenat-Thalmann et al. (1988) and now the standard in glTF.
 
-	This report describes the methodology, the validation experiments, and the results of the final version. The partial deliveries (prototype, modeling, and texturing, color and lighting) were integrated without architectural changes; the last stage added the animations and their interaction.
+	This report describes the planning, visual evolution, design decisions, technical problems, validation experiments, and results of the final version. The project did not begin as a finished scene: it started with an altar made from cubes, cylinders, spheres, and flat colors; grew into a complete environment; received textures, lighting, and materials; and finally incorporated navigation and nine interactive animations. Documenting this process explains not only what was delivered, but also why each decision was made.
+
+	\section{Concept, Memory, and Meaning of the Ofrenda}
+	\subsection{Choosing Día de Muertos}
+	The team chose \textit{Día de Muertos} because it naturally brings together memory, journey, and visual representation. Rather than building an isolated altar viewed from a single position, the goal was to create an experience: entering through a cemetery, walking among graves, following light and petals, and gradually discovering the \textit{ofrenda}. Navigation therefore became part of the narrative. The cempasúchil path guides the visitor; votive candles and lanterns make the route visible; \textit{papel picado} introduces color and movement; monarch butterflies evoke return; and the altar gathers food, vessels, flowers, and portraits.
+
+	The scene avoids representing death only through darkness. The night, cemetery, and graves establish the setting, while orange flowers, warm light, moving petals, and offerings turn the space into a place of encounter. This duality guided the palette: cool blues and shadows along the path contrast with oranges, magentas, yellows, and warm illumination near the altar.
+
+	\subsection{The Seven Portraits: Music, Fragility, and Permanence}
+	The final version dedicates its seven picture frames to Janis Joplin, Kurt Cobain, Valentín Elizalde, Amy Winehouse, Jim Morrison, Jimi Hendrix, and Kristen Pfaff. All seven died at the age of 27. Their careers belong to different genres, countries, and generations, yet they share a creative intensity that survived lives cut short.
+
+	The intention is not to romanticize excess or portray suffering as a requirement for talent. Instead, the \textit{ofrenda} recalls that behind these public figures were people facing pressure, isolation, addiction, violence, exhaustion, and expectations that often exceeded the support available to them. Valentín Elizalde also represents a Mexican musical tradition and a death marked by violence; Kristen Pfaff recognizes those who did not always occupy center stage but still left a decisive mark on their generation.
+
+	The altar makes a gesture of remembrance: it briefly separates these people from the myth of the ``27 Club'' and returns an individual place to each of them. Every photograph is different and occupies its own position. Water, \textit{pan de muerto}, flowers, candles, food, and everyday objects surround them. Together, the scene suggests that a body of work may endure even when a life was short and difficult, and that remembrance also requires empathy for the human cost behind that work.
+
+	\subsection{Translating the Concept into the Scene}
+	The spatial arrangement reinforces the meaning. Portraits are distributed across all three tiers so that no hierarchy is imposed on the people being honored. The cempasúchil arch frames the composition; candles form lines and groups that direct the eye; water and containers make use of translucent materials; bread and food add volume and variety; and \textit{papel picado} breaks the rigidity of the steps. One butterfly rests before the \textit{ofrenda} and can take flight, while others appear along the path. The complete scene therefore becomes a transition from the silence of the cemetery to a memory illuminated and set in motion.
 
 	\section{Objectives}
 	\subsection{General Objective}
@@ -214,7 +231,7 @@
 		\item Integrate at least eight team-made models and eight library models, textured and organized in a hierarchical scene graph.
 		\item Light the scene with at least two techniques (Phong for opaque materials and Fresnel for translucent ones) and an environment map.
 		\item Provide at least two real-time light interactions.
-		\item Integrate three code animations, three animations created in external software, and two skeletal animations, all triggered from the keyboard.
+		\item Integrate three code animations, three animations created in external software, and three skeletal animations, all triggered from the keyboard.
 		\item Keep the CMake build working on macOS, Windows, and Linux.
 	\end{itemize}
 
@@ -242,25 +259,342 @@
 		\label{tab:phases}
 	\end{table}
 
+	\subsection{Project Evolution across Deliveries}
+	\subsubsection{Planning and a Prototype Made from Primitives}
+	The first version deliberately had a small scope. A three-tier altar was built from cubes, while offerings were represented with primitives: cylinders for candles, spheres for fruit, a torus and cone for a simplified flower, and flat planes anticipating the portraits. Materials used flat colors and a warm light made the volumes readable. The prototype did not aim for realism; it answered composition questions such as the number and proportions of the tiers, the focal point, and the space future offerings would require.
+
+	Its main lesson was that a simple representation can reveal problems before time is invested in detail. Primitives made it possible to move complete groups, test framing, and confirm that the stepped altar provided enough surfaces to distribute objects without losing legibility.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.85\textwidth]{../images/etapa-prototipo.png}
+		\caption{Initial prototype built from primitives, flat colors, and a basic three-tier composition.}
+		\label{fig:stage-prototype}
+	\end{figure}
+
+	\subsubsection{From an Isolated Altar to a Complete Scene}
+	During the modeling delivery, the team concluded that the altar, although recognizable, was not enough to communicate an experience. The scope expanded into a walkable environment: an adobe house with a porch, a central path, and a cemetery at the opposite end. The route provided a natural place for lanterns, suspended \textit{papel picado}, graves, crypts, walls, fences, vegetation, and butterflies.
+
+	The earliest team-made models were reviewed and remodeled where necessary. Scale, origins, normals, mesh density, and proportions were corrected. Some objects that worked in close-up became too expensive when repeated; others were too simple when placed in the foreground. The team adopted a definition of done for every model: applied transforms, an origin near the base, an identifiable name, correct normals, reasonable complexity, valid glTF export, and verification in both solid and wireframe views.
+
+	The minimum goal of eight original models was exceeded by dividing work into families. The team modeled the altar, flowers, petals, candles, \textit{pan de muerto}, \textit{calaveritas de azúcar}, \textit{papel picado}, censer, picture frames, vases, vessels, butterflies, lanterns, architecture, food, sweets, and bottles. Environmental pieces from the \textit{Kenney Graveyard Kit} complemented the cemetery without replacing authorship of the principal objects.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.48\textwidth]{../images/etapa-modelado-ofrenda.png}\hfill
+		\includegraphics[width=0.48\textwidth]{../images/etapa-modelado-alambre.png}
+		\caption{Modeling stage: composition without materials (left) and review of polygonal construction in wireframe mode (right).}
+		\label{fig:stage-modeling}
+	\end{figure}
+
+	\subsubsection{Reorganization and Integration}
+	As the catalog grew, organization became as difficult as modeling. Objects had to share a coherent scale, rest correctly on surfaces, and avoid occupying one another's space. The \textit{ofrenda} was reorganized by zones and tiers; cells were reserved for groups of candles, food, portraits, and containers, and geometric checks prevented intersections. A Catmull--Rom curve became the common axis used to distribute petals and orient objects along the path.
+
+	This stage motivated the scene graph and instanced batches. A transform applied to a parent node moves all of its components, while thousands of repeated objects share a single geometry. This architecture allowed the scene to keep growing without turning every copy into an independent model.
+
+	\subsubsection{Texturing, Color, and Lighting}
+	The next delivery transformed the way the scene was read. Gray tones were replaced with materials distinguishing adobe, wax, paper, metal, ceramic, glass, water, flowers, and food. To avoid relying entirely on external photographs, many textures were designed procedurally in Blender. Noise networks, color blends, and relief were baked into conventional color, roughness, and normal maps that glTF and OpenGL could load efficiently.
+
+	Baking solved an important difference between Blender and the custom engine: a complex node network is not reproduced automatically in GLSL. Converting it into images preserved its overall appearance while controlling real-time cost. UVs, margins, color spaces, and normal-map orientation had to be corrected, and meshes whose density no longer provided visible detail were reduced.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.48\textwidth]{../images/etapa-texturizado-ofrenda.png}\hfill
+		\includegraphics[width=0.48\textwidth]{../images/etapa-texturizado-pbr.png}
+		\caption{Texturing and lighting stage: view of the \textit{ofrenda} and detail of materials using baked maps.}
+		\label{fig:stage-texturing}
+	\end{figure}
+
+	Lighting was also redesigned. A cool directional light establishes the night, while votive candles and lanterns provide warm point lights. Grouped fill lights preserve the presence of the altar without evaluating every source against every object. Glass and water use Fresnel to strengthen their edges and transmit the background. The final decision was to keep all lighting in OpenGL: no static illumination was baked into textures, so switching, fading, and flickering remain interactive.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.90\textwidth]{../images/etapa-fresnel.png}
+		\caption{Test of translucent materials using a Fresnel approximation for glass and water.}
+		\label{fig:stage-fresnel}
+	\end{figure}
+
+	\subsubsection{Animation and Final Integration}
+	With the scene modeled, textured, and lit, the final stage added movement without replacing the existing engine. Three code animations, three Blender animations, and three skeletal animations were produced. They were first developed as isolated clips or tests, then integrated into the scene, assigned to keys, adapted to existing hierarchies, and optimized so that light filtering and camera culling remained valid.
+
+	The most delicate task was reproducing external animations faithfully. Conventional export does not always preserve modifiers, simulations, or shape keys exactly as they appear in Blender. For that reason, \textit{papel picado} was converted to a cache of per-vertex positions; the whirlwind and pitcher were exported as binary tracks; and characters were exported in glTF with an armature, skin, and clips. The final version plays these data inside OpenGL and combines them with the engine's interaction and lighting.
+
 	\subsection{Team Organization}
-	Within each phase the team worked in short Scrum-style iterations. Table~\ref{tab:roles} lists the roles.
+
+	The team adapted Scrum to the four course deliveries. Each delivery worked as
+	a sprint with an executable increment: prototype, modeling, texturing and
+	lighting, and animation with product completion. The Product Backlog grouped
+	infrastructure, modeling, composition, materials, animation, optimization, and
+	documentation tasks. At the beginning of each iteration, tasks were prioritized
+	by dependency and value to the scene. During development, the team communicated
+	progress and blockers. Each sprint ended with a full review in OpenGL and a
+	short retrospective.
 
 	\begin{table}[H]
 		\centering
 		\small
-		\begin{tabularx}{\textwidth}{p{5.2cm}p{3.0cm}X}
+		\begin{tabularx}{0.96\textwidth}{p{3.8cm}p{2.7cm}X}
 			\toprule
-			\textbf{Member} & \textbf{Role} & \textbf{Responsibility}\\
+			\textbf{Member} & \textbf{Role} & \textbf{Main responsibility}\\
 			\midrule
-			Basilio Illescas Andrés & Product Owner & Prioritize elements and check that the scene represents the theme. \\
-			Trejo Olvera Emmanuel & Scrum Master & Coordinate progress, remove blockers, and integrate the floral system. \\
-			Pérez Olvera Alexis Abraham & Developer & Model offering objects and verify their integration. \\
-			Cruz Macedo Samuel Santiago & Developer & Model architectural and environmental elements. \\
+			Basilio Illescas Andrés & Product Owner & Scope priorities, cultural validation, and increment reviews.\\
+			Trejo Olvera Emmanuel & Scrum Master & Coordination, Blender--OpenGL integration, performance, and compatibility.\\
+			Pérez Olvera Alexis Abraham & Developer & Ofrenda models, materials, textures, and glTF exports.\\
+			Cruz Macedo Samuel Santiago & Developer & Architecture, cemetery, route, and integration testing.\\
 			\bottomrule
 		\end{tabularx}
-		\caption{Team roles.}
+		\caption{Main roles and responsibilities of the team.}
 		\label{tab:roles}
 	\end{table}
+
+	Work tracking used the states \textit{pending}, \textit{in development},
+	\textit{in review}, \textit{integrated}, and \textit{done}. A task closed only
+	after integration into the main scene and verification against its acceptance
+	criteria. Model reviews covered scale, origin, normals, UVs, complexity, and
+	export. Code reviews required a clean build, portable paths, and no regressions.
+	Animation reviews checked input activation, stable playback, and visual
+	integration. Branches and focused commits separated changes, while
+	\texttt{.gitignore} excluded build output and temporary files.
+
+	\begin{table}[H]
+		\centering
+		\small
+		\begin{tabularx}{0.96\textwidth}{p{1.4cm}p{3.5cm}X}
+			\toprule
+			\textbf{Sprint} & \textbf{Objective} & \textbf{Verifiable increment}\\
+			\midrule
+			1 & Prototype & Concept, primitive altar, camera, and initial layout.\\
+			2 & Modeling & Walkable environment, original models, hierarchies, and instances.\\
+			3 & Appearance & Textures, skybox, Phong, Fresnel, lights, and initial optimization.\\
+			4 & Animation and completion & Nine animations, navigation, testing, documentation, and packaging.\\
+			\bottomrule
+		\end{tabularx}
+		\caption{Main iterations and the result of each increment.}
+		\label{tab:sprints}
+	\end{table}
+
+	The main risks involved platform differences, overly complex models, excessive
+	light counts, external animations that were difficult to reproduce, and Git
+	conflicts on binary files. Partial integrations, testing on macOS, Windows, and
+	Linux, baked animation data, instancing, light filtering, and stable versions
+	reduced these risks. This organization kept Blender, OpenGL, and documentation
+	work connected instead of turning partial deliveries into separate projects.
+
+	\begin{comment}
+
+	Project organization was based on an adaptation of the \textit{Scrum} agile methodology. Because this was an academic project with previously established delivery dates, the framework was not applied strictly. Instead, its most useful elements were retained: role assignment, iterative work, prioritization through a \textit{Product Backlog}, brief follow-up meetings, increment reviews, and retrospectives.
+
+	The goal of this organization was to prevent modeling, programming, texturing, and documentation from progressing as isolated activities. Each increment had to be integrated periodically into the main application while preserving an executable version. In this way, problems involving scale, materials, paths, performance, or compatibility could be identified before the corresponding delivery.
+
+	\subsubsection{Roles and Responsibilities}
+
+	Although each member had a principal area, responsibilities were not considered exclusive. Models, textures, animations, and code changes were reviewed by more than one person before integration. This distributed the workload and reduced dependence on any single member.
+
+	\begin{table}[H]
+		\centering
+		\small
+		\begin{tabularx}{0.96\textwidth}{
+				>{\raggedright\arraybackslash}p{4.0cm}
+				>{\centering\arraybackslash}p{2.8cm}
+				X}
+			\toprule
+			\textbf{Member} &
+			\textbf{Role} &
+			\textbf{Main responsibilities}\\
+			\midrule
+
+			Basilio Illescas Andrés &
+			Product Owner &
+			Define the overall product vision, prioritize scene elements, validate that the result represented \textit{Día de Muertos} correctly, and review each increment before considering it complete. \\
+
+			Trejo Olvera Emmanuel &
+			Scrum Master &
+			Coordinate iterations, keep progress visible, detect blockers, facilitate integration between Blender and OpenGL, organize reviews, and follow up on performance and compatibility problems. \\
+
+			Pérez Olvera Alexis Abraham &
+			Developer &
+			Develop models and objects for the \textit{ofrenda}, prepare materials and textures, verify scales, origins, and glTF exports, and collaborate on the altar's final composition. \\
+
+			Cruz Macedo Samuel Santiago &
+			Developer &
+			Develop architectural and environmental elements, support construction of the cemetery and route, and participate in integration, lighting, and navigation tests. \\
+
+			\bottomrule
+		\end{tabularx}
+		\caption{Main roles and responsibilities of the team.}
+		\label{tab:roles}
+	\end{table}
+
+	\subsubsection{Product Backlog}
+
+	At the beginning, a \textit{Product Backlog} was created with the functions and resources required to complete the experience. Tasks were organized by priority and dependency. Elements essential to obtaining a functional scene were placed before decorative details or optimizations.
+
+	The backlog was divided into the following categories:
+
+	\begin{itemize}[leftmargin=*]
+		\item \textbf{Infrastructure:} OpenGL window, rendering loop, shader loading, camera, keyboard and mouse input, resource paths, and cross-platform compilation.
+
+		\item \textbf{Modeling:} altar, architecture, flowers, \textit{papel picado}, votive candles, food, vessels, butterflies, and cemetery elements.
+
+		\item \textbf{Composition:} cemetery layout, path construction, house placement, organization of the \textit{ofrenda}, and intersection correction.
+
+		\item \textbf{Materials and lighting:} UV coordinates, texture baking, PBR materials, transparency, Fresnel, skybox, point lights, and emission.
+
+		\item \textbf{Animation:} code animations, animations created in Blender, characters with armatures, track export, and keyboard interaction.
+
+		\item \textbf{Optimization:} polygon reduction, instancing, frustum culling, light selection, material caching, and removal of unused resources.
+
+		\item \textbf{Delivery:} documentation, screenshots, tests, executables, packaging, and presentation preparation.
+	\end{itemize}
+
+	Each item was converted into a verifiable task. For example, ``integrate a model'' did not end when a glTF file was copied: it also required checking scale, origin, normals, textures, location, lighting, and operation in at least one clean build.
+
+	\subsubsection{Planning by Iterations}
+
+	The course's partial deliveries were used as product increments. Each functioned as a \textit{Sprint Goal}: at the end there had to be an executable version that could be demonstrated, even if it did not yet contain every feature of the final version.
+
+	\begin{table}[H]
+		\centering
+		\small
+		\begin{tabularx}{0.96\textwidth}{
+				>{\centering\arraybackslash}p{1.4cm}
+				>{\raggedright\arraybackslash}p{3.4cm}
+				X}
+			\toprule
+			\textbf{Sprint} &
+			\textbf{Objective} &
+			\textbf{Expected increment}\\
+			\midrule
+
+			1 &
+			Prototype and planning &
+			Concept definition, altar built from primitives, initial layout, basic camera, and tool selection. \\
+
+			2 &
+			Modeling and integration &
+			Walkable scene with cemetery, path, house, altar, original models, library models, hierarchies, and instances. \\
+
+			3 &
+			Texturing and lighting &
+			Materials, baked textures, alpha clipping, skybox, dynamic lights, Phong, Fresnel, and initial performance optimizations. \\
+
+			4 &
+			Animation and completion &
+			Nine interactive animations, final navigation, photographs, final optimization, documentation, testing, and packaging. \\
+
+			\bottomrule
+		\end{tabularx}
+		\caption{Main project iterations and their increments.}
+		\label{tab:sprints}
+	\end{table}
+
+	At the beginning of each iteration, the highest-priority tasks were selected and their dependencies identified. For example, the \textit{papel picado} animation could not be integrated before the final model, its materials, and a stable way to update its vertices were available. Likewise, photographs were incorporated only after the positions and UV coordinates of the picture frames had been fixed.
+
+	\subsubsection{Work Tracking}
+
+	To visualize progress, a task board was used with states equivalent to:
+
+	\begin{center}
+		\textit{Pending}
+		$\longrightarrow$
+		\textit{In Development}
+		$\longrightarrow$
+		\textit{In Review}
+		$\longrightarrow$
+		\textit{Integrated}
+		$\longrightarrow$
+		\textit{Done}
+	\end{center}
+
+	A task was not considered complete while it remained only in a Blender file or an individual branch. It had to be integrated into the main scene, compiled, and visually reviewed. When a task caused a problem, it returned to development with a concrete observation, such as correcting scale, reducing polygons, repairing normals, adjusting UVs, resolving an intersection, or improving performance.
+
+	Tracking was conducted through brief meetings and asynchronous communication. Each member reported:
+
+	\begin{enumerate}[leftmargin=*]
+		\item which activity had been completed;
+		\item which activity would be performed next;
+		\item which impediment could affect integration;
+		\item which files or modules would be modified.
+	\end{enumerate}
+
+	\subsubsection{Adapted Ceremonies}
+
+	\begin{itemize}[leftmargin=*]
+		\item \textbf{Sprint Planning:} at the beginning of each delivery, the objective was defined, tasks were selected, and responsibilities were assigned.
+		\item \textbf{Asynchronous Daily Scrum:} progress, the next activity, and blockers were communicated without requiring a daily in-person meeting.
+		\item \textbf{Backlog Refinement:} large tasks were divided into smaller activities. For example, ``texture the altar'' was separated into UVs, materials, baking, export, loading, and validation in OpenGL.
+		\item \textbf{Sprint Review:} at the end of each increment, the complete application was run and composition, controls, lighting, animations, and requirement compliance were reviewed.
+		\item \textbf{Sprint Retrospective:} the team identified practices to retain and problems that should not be repeated, such as versioning build directories, exporting models at different scales, or integrating too many changes without an intermediate test.
+	\end{itemize}
+
+	\subsubsection{Acceptance Criteria and Definition of Done}
+
+	To reduce different interpretations of progress, a \textit{Definition of Done} was established. A task could only be closed when it met the applicable criteria in Table~\ref{tab:definition-done}.
+
+	\begin{table}[H]
+		\centering
+		\small
+		\begin{tabularx}{0.96\textwidth}{
+				>{\raggedright\arraybackslash}p{3.3cm}
+				X}
+			\toprule
+			\textbf{Task type} &
+			\textbf{Criteria for considering it complete}\\
+			\midrule
+
+			3D model &
+			Correct scale and origin, applied transforms, properly oriented normals, geometry without visible errors, identifiable name, reasonable complexity, and verified glTF export. \\
+
+			Texture or material &
+			Verified UVs, correctly located images, appropriate color space, material visible in OpenGL, and no incorrect edges or transparency. \\
+
+			Code change &
+			Error-free build, expected behavior, absence of regressions, portable paths, and review of performance impact. \\
+
+			Animation &
+			Correct start and end, stable playback, input activation, scene integration, and absence of severe jumps, deformation, or intersections. \\
+
+			Documentation &
+			Updated description, titled figures, consistent references, reviewed spelling, and correspondence with the implemented version. \\
+
+			\bottomrule
+		\end{tabularx}
+		\caption{Definition of Done used to review tasks.}
+		\label{tab:definition-done}
+	\end{table}
+
+	\subsubsection{Integration and Change Control}
+
+	To reduce conflicts, changes were made in branches or working versions and integrated only after review. Before combining a modification, the team verified that the main branch was up to date and that the project still compiled.
+
+	Files generated by CMake, Xcode, and Visual Studio were excluded through \texttt{.gitignore}. Source models, final textures, export scripts, shaders, and documentation remained versioned. Large changes were divided into commits with a recognizable purpose, making it easier to identify regressions and return to a stable version when an integration affected the scene.
+
+	During periods of high activity, the team attempted to assign one person responsible for integration. This person's role was to gather changes, check paths, resolve conflicts, run a clean build, and verify that the visual result was preserved. This practice was particularly important while incorporating animations and optimizing the altar.
+
+	\subsubsection{Risk Management}
+
+	Technical and organizational risks identified during planning included:
+
+	\begin{itemize}[leftmargin=*]
+		\item differences among macOS, Windows, and Linux;
+		\item incompatible paths or image formats;
+		\item models with too many polygons;
+		\item performance loss caused by excessive lights;
+		\item Blender animations not playing identically in OpenGL;
+		\item Git conflicts involving binary files;
+		\item excessive growth of the repository and final PDF;
+		\item late integration of work developed separately.
+	\end{itemize}
+
+	To mitigate them, stable versions were maintained, cross-platform tests were performed, difficult-to-reproduce data were baked, models were optimized, lights were filtered, and partial integrations were completed before delivery dates.
+
+	\subsubsection{Methodology Outcome}
+
+	The methodology allowed each delivery to be a functional increment rather than a collection of isolated files. The prototype validated composition; modeling produced a walkable environment; texturing and lighting established the visual identity; and the final iteration added movement, interaction, and documentation.
+
+	Although Scrum was adapted, its principles helped keep priorities visible, detect blockers, review progress frequently, and preserve an integrated version. The principal improvement was transforming individual modeling, programming, and animation work into one coherent and verifiable product.
+
+	\end{comment}
 
 	\subsection{Tools and Technologies}
 	\begin{table}[H]
@@ -286,11 +620,11 @@
 	\subsection{Modeling and Scene Composition}
 	The team-made models were built in Blender from primitives using extrusion, surfaces of revolution, and modifiers, and exported to glTF with their hierarchy intact. The altar, for instance, splits into its three tiers, and the lantern into post, arm, and lamp. The application replicates that hierarchy as editable nodes: each node stores local translation, rotation, and scale, and its world matrix is $M_{\text{world}} = M_{\text{parent}}\, T\, R\, S$.
 
-	The final scene has 2,132 nodes, 77 distinct models, and 10,548 instances. Elements repeated thousands of times (petals, candles, flowers, and walls) are grouped in batches and drawn with \texttt{glDrawElementsInstanced}, with one matrix and one tint per instance. The path is a centripetal Catmull-Rom spline, evaluated with the algorithm of Barry and Goldman (1988) and reparameterized by arc length; it places petals, candles, lanterns, and papel picado at regular intervals. Figure~\ref{fig:general} shows the layout.
+	The final scene has 2,134 nodes, 81 loaded models, and 10,549 instances. Elements repeated thousands of times (petals, candles, flowers, and walls) are grouped in batches and drawn with \texttt{glDrawElementsInstanced}, with one matrix and one tint per instance. The path is a centripetal Catmull-Rom spline, evaluated with the algorithm of Barry and Goldman (1988) and reparameterized by arc length; it places petals, candles, lanterns, and \textit{papel picado} at regular intervals. Figure~\ref{fig:general} shows the layout.
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.85\textwidth]{images/vista-general.jpg}
+		\includegraphics[width=0.85\textwidth]{../images/final-general.png}
 		\caption{General view: cemetery, petal path, and the house with the offering.}
 		\label{fig:general}
 	\end{figure}
@@ -300,7 +634,7 @@
 
 	Lighting combines two techniques:
 	\begin{itemize}[leftmargin=*]
-		\item \textbf{Phong} for opaque materials: a bluish directional moonlight and up to 25 point lights (votive candles, tall candles, and lanterns) with quadratic attenuation. Specular sharpness is derived from material roughness.
+		\item \textbf{Phong} for opaque materials: a bluish directional moonlight and up to 25 point lights selected among votive candles, lanterns, and altar fill lights, with quadratic attenuation. Specular sharpness is derived from material roughness.
 		\item \textbf{Fresnel} for glass and water: Schlick's approximation mixes the transmitted color with a reflection that grows at grazing angles. This is what makes glasses, pitchers, and candle holders readable.
 	\end{itemize}
 	The environment is a skybox with a cube map. Its vertex shader removes the view translation so the horizon does not move, and its fragment shader darkens the original sunset toward a night tone. To avoid iterating over useless lights, the renderer keeps only the lights whose bounding volume can reach each object and culls primitives outside the camera using frustum planes extracted from the view-projection matrix (Gribb and Hartmann, 2001).
@@ -360,13 +694,19 @@
 
 	Each character's trajectory is written in code as a sequence of segments (walk along a route, turn, play a clip). While walking, the cycle phase advances with the distance covered (0.95 m per cycle), which keeps the feet from sliding. Visitor 1 carries a pan de muerto attached to an anchor node that is a child of the forearm bone; when the placing clip ends, the bread stays on the first tier of the altar.
 
-	\subsection{Interaction}
-	Navigation is first-person, walking or free flight. Table~\ref{tab:controls} lists the controls.
+	\subsection{Navigation and Interaction}
+	Navigation was designed as a first-person walk. At startup, the camera appears at the cemetery entrance, approximately 1.3~m above the ground and facing the altar. This position gives the visitor a visual objective from the first frame: lighting and the petal path show where to proceed without requiring an overlay interface.
+
+	In walking mode, \texttt{WASD} moves the visitor across the ground plane. Height remains fixed while a low-amplitude vertical and lateral bob is added. Its frequency and smoothness were adjusted to suggest footsteps without producing an aggressive oscillation. \texttt{Shift} temporarily multiplies the speed and the mouse wheel changes the base speed. Orientation follows mouse movement; \texttt{TAB} captures or releases the cursor, allowing the user to alternate between direct camera control and ordinary desktop use.
+
+	The \texttt{F} key enables free flight. Only in that mode are \texttt{Q} and \texttt{E} enabled for descending and ascending. This separation prevents the visitor from accidentally leaving ground level during normal walking, while preserving a useful tool for inspecting the scene, recording evidence, or reviewing objects from above. \texttt{R} returns the camera to the entrance and \texttt{F2} toggles between the final finish and wireframe rendering.
+
+	In addition to free movement, key \texttt{2} starts a prepared camera tour as a demonstration. During that clip, movement input is suspended to prevent the user from displacing the trajectory; pressing the same key again cancels the route and immediately returns control. Table~\ref{tab:controls} summarizes all controls.
 
 	\begin{table}[H]
 		\centering
 		\small
-		\begin{tabularx}{\textwidth}{p{3.8cm}X}
+		\begin{tabular}{>{\centering\arraybackslash}p{3.8cm}p{9cm}}
 			\toprule
 			\textbf{Input} & \textbf{Action}\\
 			\midrule
@@ -381,13 +721,15 @@
 			R & Return to the cemetery entrance. \\
 			Esc & Close the application. \\
 			\bottomrule
-		\end{tabularx}
+		\end{tabular}
 		\caption{Application controls.}
 		\label{tab:controls}
 	\end{table}
 
-	\subsection{Offering Photographs}
-	The seven picture frames on the altar are in place, but the photographs are pending for the version the team will present. Each photo is the \texttt{foto} mesh of the frame model. To change it, edit its texture in \path{modelos-blender/portarretratos/portarretratos_texturizados.blend} and export the glTF again; the procedure is in the ``Fotos de la ofrenda'' section of \texttt{README.md}.
+	\subsection{Integration of the Photographs}
+	The seven picture frames display different photographs. To avoid duplicating seven complete glTF models, the engine loads three base frame models and creates logical variants of the photographic-surface material. Each variant replaces only that surface's texture while preserving the frame, geometry, maps, and remaining materials. Images were preprocessed as JPEG files with an orientation and crop compatible with the frame UVs, and are stored in \path{assets/textures/fotografias/procesadas/}.
+
+	This solution assigned a different person to every position without re-exporting the altar or changing the approved composition. Three portraits occupy the upper tier and four stand behind vases on the first and second tiers. Selecting the material by name keeps the change limited to the photograph and does not alter the wood, glass, or lighting of the frame.
 
 	\section{Experiments}
 
@@ -400,6 +742,38 @@
 		\item Rounding differences between compilers change the offering piece count by a few units; a small difference is logged as a warning.
 		\item The VirtIO driver of a Windows 11 ARM virtual machine did not expose OpenGL 3.3, so the application needs a driver with real OpenGL 3.3 support.
 	\end{itemize}
+
+	\subsection{Automation and Distribution of the Windows Executable}
+	To produce a reproducible delivery without requiring a team member to compile manually on Windows, the workflow \texttt{.github/workflows/windows-installer.yml} was added. It can be started manually from GitHub Actions and also runs whenever a tag beginning with \texttt{v} is published. GitHub assigns a Windows Server 2022 virtual machine, configures the project with CMake and Visual Studio 2022 for 64-bit architecture, builds the \textit{Release} configuration, and verifies the executable, models, textures, animations, shaders, and instruction files.
+
+	Packaging is performed with CPack and NSIS. Installation rules in \texttt{CMakeLists.txt} place \texttt{CEMPASUCHIL.exe}, \texttt{assets/}, \texttt{shaders/}, \texttt{README.txt}, and the license in a single installer. GLFW and GLAD are incorporated during compilation, and the Visual C++ runtime is linked statically. The destination computer therefore does not need CMake, Visual Studio, Blender, or the repository; it only needs 64-bit Windows and a graphics driver supporting OpenGL 3.3 Core or later.
+
+	After the workflow finishes, GitHub Actions publishes the installer and its SHA-256 checksum as a temporary artifact. For a permanent download, release \texttt{v1.0.0}, titled \textit{CEMPASÚCHIL v1.0.0 --- Final Delivery}, was created in GitHub Releases. It contains \texttt{CEMPASUCHIL-Setup-0.2.0-win64.exe}, \texttt{SHA256.txt}, requirements, and complete usage instructions.
+
+	\begin{center}
+		\large
+		\textbf{\href{https://github.com/olveratrech/proyecto-final-cempasuchil/releases/latest}{Click here to download the latest release of CEMPASÚCHIL}}
+	\end{center}
+
+	Installation consists of three short steps:
+	\begin{enumerate}[leftmargin=*]
+		\item Download \texttt{CEMPASUCHIL-Setup-0.2.0-win64.exe} from the release's \textit{Assets} section.
+		\item Run the installer and follow the wizard. Because this is an unsigned academic project, Windows may display a warning before opening it.
+		\item Start \textit{CEMPASÚCHIL} from the Start menu or from the shortcut created by the installer.
+	\end{enumerate}
+	The installer contains all scene resources and includes an uninstaller. The installed \texttt{README.txt} contains controls, animations, command-line options, and troubleshooting information. Users do not need to download the source code or copy resource folders separately.
+
+	\subsection{Version Control and Work Integration}
+	Version control was one of the most persistent challenges. The team worked on macOS, Windows, and Linux, and each operating system generated different build directories, projects, caches, and temporary files. Early CMake, Xcode, and Visual Studio products occasionally became mixed with source files, increasing change size and creating conflicts unrelated to actual work.
+
+	The solution was to define a common structure and strengthen \texttt{.gitignore}: \texttt{build-*} directories, binaries, objects, logs, caches, Blender backups, and operating-system metadata were excluded. Model sources, final textures, export scripts, code, shaders, and documentation remained versioned. When local and remote histories diverged, \texttt{git pull --rebase} placed local work over the remote history, allowing conflicts to be resolved explicitly and avoiding accidental merge chains.
+
+	Resource size created another issue. Blender files, high-resolution textures, and animation caches do not behave like source code because Git cannot represent their differences efficiently. Before the final delivery, the team audited what the application actually loaded. Local builds, logs, duplicate photographs, unused models, and associated textures were removed, while the Blender sources needed to prove authorship and regenerate animations were retained.
+
+	\subsection{Performance Problems and Optimization Decisions}
+	The altar was the main performance pressure point: it concentrates thousands of petals, dozens of candles, flowers, food, transparent vessels, \textit{papel picado}, and several light sources. The first implementation lost frames near the altar because dense meshes were combined with too many light evaluations per object. Static baked lighting was rejected because candles and lanterns needed to remain interactive in OpenGL.
+
+	Complementary measures were applied: polygon reduction on heavy models, normal maps to preserve apparent detail, instanced rendering, frustum culling, bounding volumes for light filtering, grouped altar lights, material caching, and buffer updates only while an animation requires them. The result preserves dynamic lighting and visual composition while avoiding evaluation of every light against every vertex or fragment.
 
 	\subsection{Animation Validation}
 	The animations were tested on Linux with Mesa (\texttt{llvmpipe}, OpenGL 4.5 Core) inside a virtual X server. A script outside the repository opened the application at a fixed view, sent the keys with \texttt{xdotool}, and took screenshots at intervals with FFmpeg. This way every animation was checked without manual input. The screenshots in the results section come from those runs. The following was also verified:
@@ -415,128 +789,342 @@
 
 	\section{Results}
 
-	\subsection{Requirements Compliance}
-	Table~\ref{tab:requirements} compares the minimum requirements of the specification with the implementation.
+	The final result of \textit{CEMPASÚCHIL} is a walkable three-dimensional scene that brings together the different stages developed throughout the semester: planning, modeling, composition, texturing, lighting, animation, interaction, and optimization. The application stopped being only an isolated representation of an altar and became a complete environment composed of the cemetery, the petal path, the adobe house, and the \textit{ofrenda}. This layout prevents the user from seeing every element at the beginning and instead allows the scene to be discovered while moving from the entrance toward the altar.
 
-	\begin{table}[H]
+	The final scene contains 2,134 nodes, 81 loaded models, and 10,549 instances. The difference between the number of models and the number of visible elements is mainly due to geometry reuse. Petals, flowers, votive candles, butterflies, walls, and other repeated objects share their meshes and are distributed through independent transforms. This made it possible to populate the environment without storing a complete copy of every element and without changing the visual composition that had already been approved.
+
+	The altar was the area that received the greatest amount of work. In addition to its three tiers, it incorporates votive candles, food, \textit{pan de muerto}, sweets, drinks, vessels, \textit{calaveritas de azúcar}, flowers, \textit{papel picado}, vases, photographs, and different decorative objects. The placement of each piece had to be reviewed several times because the models came from different files and did not always share the same scale, orientation, or origin. In Blender, some objects looked correct individually, but after export they could appear too large, rotated, buried in a surface, or separated from their support point.
+
+	Solving this part required more than moving objects until they looked correct from a single camera. The team also checked that they did not intersect votive candles, that food rested on the tiers, that picture frames were not hidden by vases, and that the composition remained readable from different angles. The \textit{ofrenda} ultimately functioned as a complete composition rather than an accumulation of independent models.
+
+	Integrating the photographs completed the visual purpose of the altar. The seven portraits correspond to Janis Joplin, Kurt Cobain, Valentín Elizalde, Amy Winehouse, Jim Morrison, Jimi Hendrix, and Kristen Pfaff. Instead of duplicating all picture-frame models, three base models were reused and material variants were generated to assign a different image to every position. This preserved geometry, frames, and their materials while modifying only the surface that displays the photograph.
+
+	During the texturing stage, the team confirmed that the appearance achieved in Blender did not transfer automatically to OpenGL. Several node networks relied on Blender-specific procedures that glTF could not reproduce directly. For this reason, procedural textures were baked into color, roughness, and normal maps. Baking preserved details such as ceramic irregularities, relief on \textit{pan de muerto}, surface wear, and color variations without increasing geometry excessively.
+
+	UV coordinates, color spaces, transparency, and normal-map orientation also had to be reviewed. Some errors appeared only after export: dark borders around transparent areas, inverted textures, overly glossy materials, or images that did not load outside macOS. Integrating different image loaders and reorganizing resource paths allowed materials to be located in the same way on Windows, macOS, and Linux.
+
+	Final lighting remained entirely inside OpenGL. No static lights were baked into textures because votive candles and lanterns had to react to user interaction. The scene uses cool illumination to establish the nighttime environment and warm lights to mark the path and emphasize the \textit{ofrenda}. The contrast between both areas helped make the altar the principal focal point without illuminating the entire environment uniformly.
+
+	The concentration of lights and models at the altar caused one of the main performance problems. Approaching this area combined thousands of instances, transparent surfaces, materials, and point sources. The solution was not to remove lighting, but to reduce unnecessary work. Heavy models were optimized, normal maps preserved detail, nearby lights were grouped, sources were filtered through bounding volumes, and objects outside the camera were discarded. These changes preserved the appearance of the scene and reduced frame loss during the route.
+
+	Navigation also changed from the earliest deliveries. The camera stopped functioning only as a free camera and began simulating a first-person journey. The user starts at the cemetery entrance, at approximately human height, and can walk using \texttt{WASD}. Movement includes a light bob so that displacement does not feel completely rigid. Flight remains available as a separate option for inspecting the scene, but during walking the user cannot accidentally move up or down.
+
+	The animation stage brought together three different forms of work. The butterfly, camera route, and votive-candle animations were developed directly in code. \textit{Papel picado}, the petal whirlwind, and the pitcher were created in Blender and then exported as data OpenGL could reproduce. Finally, the visitors and skeleton used armatures and skeletal animation. The scene therefore contains nine principal animations controlled by keys \texttt{1} through \texttt{9}, in addition to the lantern on/off interaction.
+
+	The \textit{papel picado} animation was one of the most complicated integrations because a conventional export did not preserve exactly the deformation observed in Blender. The movement was solved with a 96-frame vertex cache. OpenGL reproduces the exported positions and keeps the upper edge attached to the cable fixed. This allowed every sheet to move differently and prevented all pieces from sharing an artificial deformation.
+
+	The petal whirlwind uses 720 animated elements. Instead of creating one draw call per petal, one instanced batch is updated. The pitcher required coordination among vessel rotation, water level, stream, and glass filling. Characters required loading bones, clips, weights, and transformation matrices, as well as blending poses to avoid abrupt changes among walking, stopping, placing an offering, waving, or dancing.
+
+	Another important result was cross-platform compatibility. The project was developed on macOS, Windows, and Linux computers, which introduced differences in compilers, paths, libraries, and graphics drivers. Some failures appeared to belong to the scene but were actually caused by how each system located resources or created the OpenGL context. CMake configuration, image loaders, and platform launchers helped preserve one project without dividing the code into incompatible versions.
+
+	Version control also became part of development. The repository came to contain large Blender models, textures, screenshots, documentation, and animation caches. Conflicts did not occur only in code; they also appeared when two members modified composition files, documentation, or binary resources. Branches had to be reorganized, remote changes integrated through \textit{rebase}, generated folders excluded, and the files truly required for delivery reviewed.
+
+	Final cleanup reduced duplicate files, local builds, logs, models no longer present in the scene, and photograph versions unused by the program. At the same time, source files required to demonstrate modeling and regenerate animations were preserved. After cleanup, a build from scratch verified that no deleted resource was essential.
+
+	Overall, the result meets the requirements for original and library models, texturing, skybox, light interaction, code animation, external animation, skeletal animation, and user input. Beyond the number of elements, the principal result was making work produced at different moments and in different tools operate as one scene. Blender modeling, baked textures, OpenGL lighting, animation tracks, and navigation were integrated into an application that can be explored and demonstrated as a complete product.
+
+	\section{Visual Evidence of the Final Scene}
+
+	The following screenshots document the final version of CEMPASÚCHIL. They are grouped by composition, detail, lighting, and animation in order to show both the visual result and state changes that cannot be appreciated in a single image.
+
+	\begin{figure}[p]
 		\centering
-		\small
-		\begin{tabularx}{\textwidth}{p{6.2cm}X}
-			\toprule
-			\textbf{Requirement} & \textbf{Implementation}\\
-			\midrule
-			8 library or modeled models & 25 Kenney Graveyard Kit models (graves, crypts, fences, cypresses, characters). \\
-			8 team-made models & Over 40 team-made models: altar, arch, flower, petal, candles, bread, sugar skull, papel picado, picture frames, pitcher, glass, lantern, house, gateway, dishes, and sweets. \\
-			2 light interactions & Votive candles (3) and lanterns (L). \\
-			Skybox and textures on team models & Night cube map and baked textures on every team-made model. \\
-			2 skeletal animations & Visitor 1 (7), visitor 2 (8), and dancing skeleton (9). \\
-			3 code animations & Butterfly (1), camera tour (2), and candles (3). \\
-			3 external-software animations & Papel picado (4), petal whirlwind (5), and pitcher (6). \\
-			8 input-driven animations & Nine keys (1 to 9) plus L. \\
-			Phong and Fresnel & Phong on opaque materials; Schlick's Fresnel on glass and water. \\
-			\bottomrule
-		\end{tabularx}
-		\caption{Minimum requirements and compliance.}
-		\label{tab:requirements}
-	\end{table}
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/final-entrada.png}\\\scriptsize Cemetery gateway\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/vista-entrada.png}\\\scriptsize Initial view\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/final-camino.png}\\\scriptsize Cempasúchil path\end{minipage}\\[0.18cm]
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/final-altar.png}\\\scriptsize Final ofrenda\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/detalle-alimentos.png}\\\scriptsize Food models\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/detalle-recipientes.png}\\\scriptsize Vessels and glass\end{minipage}\\[0.18cm]
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/detalle-floral.png}\\\scriptsize Floral arrangement\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/detalle-papel.png}\\\scriptsize Papel picado\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/detalle-retratos.png}\\\scriptsize Picture frames\end{minipage}
+		\caption{General views and model details. The route connects the entrance, path, and ofrenda. Close views show baked textures, normal maps, transparency, and the photographs on the altar.}
+		\label{fig:evidence-scene-models}
+	\end{figure}
 
-	\subsection{Application Screenshots}
-	Figures~\ref{fig:cemetery} to \ref{fig:offering} show the main areas of the scene, and Figures~\ref{fig:anim1} to \ref{fig:lanterns} show each animation in progress.
+	\begin{figure}[p]
+		\centering
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/comparativa-luces-prendidas.png}\\\scriptsize Lanterns on\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/comparativa-luces-apagadas.png}\\\scriptsize Lanterns off\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-luces-encendidas.png}\\\scriptsize Votive candles on\end{minipage}\\[0.16cm]
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-luces-apagadas.png}\\\scriptsize Votive candles off\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-mariposas.png}\\\scriptsize Monarch butterflies\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-recorrido-1.png}\\\scriptsize Route start\end{minipage}\\[0.16cm]
+		\begin{minipage}{0.24\textwidth}\centering\includegraphics[width=\textwidth,height=0.095\textheight,keepaspectratio]{../images/animacion-recorrido-2.png}\\\scriptsize Gateway\end{minipage}\hfill
+		\begin{minipage}{0.24\textwidth}\centering\includegraphics[width=\textwidth,height=0.095\textheight,keepaspectratio]{../images/animacion-recorrido-3.png}\\\scriptsize Path\end{minipage}\hfill
+		\begin{minipage}{0.24\textwidth}\centering\includegraphics[width=\textwidth,height=0.095\textheight,keepaspectratio]{../images/animacion-recorrido-4.png}\\\scriptsize House\end{minipage}\hfill
+		\begin{minipage}{0.24\textwidth}\centering\includegraphics[width=\textwidth,height=0.095\textheight,keepaspectratio]{../images/animacion-recorrido-5.png}\\\scriptsize Arrival at the altar\end{minipage}
+		\caption{Interactive lighting and animations programmed in OpenGL. Key L changes lanterns and votive candles. Butterflies combine Catmull--Rom with a body--wing hierarchy, while the automatic camera travels to the altar.}
+		\label{fig:evidence-code-lighting}
+	\end{figure}
 
+	\begin{figure}[p]
+		\centering
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/animacion-papel-quieto.png}\\\scriptsize Papel picado at rest\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/animacion-papel-en-movimiento.png}\\\scriptsize Wind deformation\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/animacion-remolito-petalos-1.png}\\\scriptsize Whirlwind start\end{minipage}\\[0.18cm]
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/animacion-remolito-petalos-2.png}\\\scriptsize Petal lift\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/animacion-remolito-petalos-3.png}\\\scriptsize Formed spiral\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.115\textheight,keepaspectratio]{../images/animacion-jarra-de-agua-1.png}\\\scriptsize Beginning of the pour\end{minipage}\\[0.18cm]
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth,height=0.125\textheight,keepaspectratio]{../images/animacion-jarra-de-agua-2.png}\\\scriptsize Stream and filling glass\end{minipage}
+		\caption{Animations created in Blender. Exported caches and tracks preserve the papel picado deformation, the petal whirlwind, and the pitcher motion with the changing water level.}
+		\label{fig:evidence-blender}
+	\end{figure}
+
+	\begin{figure}[p]
+		\centering
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-visitante-altar-1.png}\\\scriptsize Arrival at the altar\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-visitante-altar-2.png}\\\scriptsize Preparation\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-visitante-pone-ofrenda.png}\\\scriptsize Placing the offering\end{minipage}\\[0.16cm]
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-visitante-reverencia.png}\\\scriptsize Final bow\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-visitante-tumba.png}\\\scriptsize Route among graves\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-visitante-observando-tumba.png}\\\scriptsize Observing a grave\end{minipage}\\[0.16cm]
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-visitante-tumba-bailando.png}\\\scriptsize Visitor dance\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-esqueleto-bailando-1.png}\\\scriptsize First skeleton step\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth,height=0.105\textheight,keepaspectratio]{../images/animacion-esqueleto-bailando-2.png}\\\scriptsize Second skeleton step\end{minipage}
+		\caption{Skeletal animations. The clips show the visitor placing a pan de muerto, the character walking through the cemetery, and the skeleton dancing beside the gateway.}
+		\label{fig:evidence-skeletons}
+	\end{figure}
+
+	\clearpage
+	\begin{comment}
+	\subsection{General Views and Route}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.85\textwidth]{images/panteon.jpg}
-		\caption{Cemetery with graves, crypts, and cypresses from the library.}
-		\label{fig:cemetery}
+		\begin{minipage}{0.48\textwidth}\centering
+			\includegraphics[width=\textwidth]{../images/final-entrada.png}\\
+			\small\textbf{Cemetery entrance}
+		\end{minipage}\hfill
+		\begin{minipage}{0.48\textwidth}\centering
+			\includegraphics[width=\textwidth]{../images/vista-entrada.png}\\
+			\small\textbf{Initial view toward the route}
+		\end{minipage}
+		\caption{Entrance to the experience. The gateway defines the cemetery and the camera begins facing the path that leads to the \textit{ofrenda}.}
+		\label{fig:final-entrance-eng}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.85\textwidth]{images/camino.jpg}
-		\caption{Petal path with votive candles, lanterns, and papel picado.}
-		\label{fig:path}
+		\includegraphics[width=0.86\textwidth]{../images/final-camino.png}
+		\caption{View of the cempasúchil path from the visitor's perspective. Petals, lanterns, votive candles, and \textit{papel picado} guide the eye toward the altar.}
+		\label{fig:final-path-eng}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.85\textwidth]{images/ofrenda.jpg}
-		\caption{Three-tier offering in the porch of the adobe house.}
-		\label{fig:offering}
+		\includegraphics[width=0.86\textwidth]{../images/final-altar.png}
+		\caption{Final composition of the three-tier \textit{ofrenda}, framed by the floral arch and adobe house.}
+		\label{fig:final-altar-eng}
+	\end{figure}
+
+	\subsection{Models, Materials, and Photographs}
+	\begin{figure}[H]
+		\centering
+		\begin{minipage}{0.48\textwidth}\centering
+			\includegraphics[width=\textwidth]{../images/detalle-alimentos.png}\\
+			\small\textbf{Food and ritual objects}
+		\end{minipage}\hfill
+		\begin{minipage}{0.48\textwidth}\centering
+			\includegraphics[width=\textwidth]{../images/detalle-recipientes.png}\\
+			\small\textbf{Ceramic, glass, and water}
+		\end{minipage}
+		\caption{Close views of original models. Baked textures and normal maps preserve visual detail in food, vessels, and translucent materials.}
+		\label{fig:model-details-eng}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.85\textwidth]{images/anim-1-mariposa.jpg}
-		\caption{Animation 1: the monarch butterfly in flight in front of the altar.}
-		\label{fig:anim1}
+		\begin{minipage}{0.48\textwidth}\centering
+			\includegraphics[width=\textwidth]{../images/detalle-floral.png}\\
+			\small\textbf{Cempasúchil floral system}
+		\end{minipage}\hfill
+		\begin{minipage}{0.48\textwidth}\centering
+			\includegraphics[width=\textwidth]{../images/detalle-papel.png}\\
+			\small\textbf{Papel picado and alpha clipping}
+		\end{minipage}
+		\caption{Decorative details. Flowers reuse instanced geometry, while the perforated silhouette of \textit{papel picado} is produced with transparency and alpha clipping.}
+		\label{fig:decoration-details-eng}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.85\textwidth]{images/anim-2-recorrido.jpg}
-		\caption{Animation 2: an intermediate frame of the camera tour along the path.}
-		\label{fig:anim2}
+		\includegraphics[width=0.86\textwidth]{../images/detalle-retratos.png}
+		\caption{Picture frames on the \textit{ofrenda}, showing Kurt Cobain, Janis Joplin, and Jim Morrison.}
+		\label{fig:portraits-eng}
+	\end{figure}
+
+	\subsection{Lighting Interactions}
+	\begin{figure}[H]
+		\centering
+		\begin{minipage}{0.48\textwidth}\centering
+			\includegraphics[width=\textwidth]{../images/comparativa-luces-prendidas.png}\\
+			\small\textbf{Lanterns on}
+		\end{minipage}\hfill
+		\begin{minipage}{0.48\textwidth}\centering
+			\includegraphics[width=\textwidth]{../images/comparativa-luces-apagadas.png}\\
+			\small\textbf{Lanterns off}
+		\end{minipage}
+		\caption{Lighting interaction with key L. The comparison shows the lanterns' contribution to the path without changing the camera position.}
+		\label{fig:lantern-comparison-eng}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.49\textwidth]{images/anim-3-veladoras-a.jpg}\hfill
-		\includegraphics[width=0.49\textwidth]{images/anim-3-veladoras-b.jpg}
-		\caption{Animation 3: candles off (left) and lighting up in groups (right).}
-		\label{fig:anim3}
+		\begin{minipage}{0.48\textwidth}\centering
+			\includegraphics[width=\textwidth]{../images/animacion-luces-apagadas.png}\\
+			\small\textbf{Votive candles off}
+		\end{minipage}\hfill
+		\begin{minipage}{0.48\textwidth}\centering
+			\includegraphics[width=\textwidth]{../images/animacion-luces-encendidas.png}\\
+			\small\textbf{Votive candles on}
+		\end{minipage}
+		\caption{Animation 3: candle states. The transition affects both flame emission and the point lights illuminating the environment.}
+		\label{fig:candle-animation-eng}
+	\end{figure}
+
+	\subsection{Animations Programmed in OpenGL}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.86\textwidth]{../images/animacion-mariposas.png}
+		\caption{Animation 1: monarch butterflies in flight. Their path is interpolated with Catmull--Rom and flapping is applied to the body--wing hierarchy.}
+		\label{fig:butterflies-eng}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.85\textwidth]{images/anim-5-remolino.jpg}
-		\caption{Animation 5: the petals form the spiral in front of the offering.}
-		\label{fig:anim5}
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-recorrido-1.png}\\\small Cemetery start\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-recorrido-2.png}\\\small Crossing the entrance arch\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-recorrido-3.png}\\\small Path traversal\end{minipage}\\[0.3cm]
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-recorrido-4.png}\\\small Approaching the house\end{minipage}\hfill
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-recorrido-5.png}\\\small Arrival at the \textit{ofrenda}\end{minipage}
+		\caption{Animation 2: automatic camera route from the cemetery entrance to a close view of the altar.}
+		\label{fig:camera-tour-eng}
+	\end{figure}
+
+	\subsection{Animations Created in Blender}
+	\begin{figure}[H]
+		\centering
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-papel-quieto.png}\\\small Papel picado at rest\end{minipage}\hfill
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-papel-en-movimiento.png}\\\small Wind deformation\end{minipage}
+		\caption{Animation 4: comparison of \textit{papel picado} at rest and in motion. The upper edge remains attached to the cable while the lower portion waves.}
+		\label{fig:papel-animation-eng}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.6\textwidth]{images/anim-6-jarra.jpg}
-		\caption{Animation 6: the pitcher pours water into the glass on the petate.}
-		\label{fig:anim6}
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-remolito-petalos-1.png}\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-remolito-petalos-2.png}\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-remolito-petalos-3.png}\end{minipage}
+		\caption{Animation 5: three moments of the petal whirlwind, from lift-off to the spiral in front of the altar.}
+		\label{fig:whirlwind-eng}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.85\textwidth]{images/anim-7-visitante.jpg}
-		\caption{Animation 7: the visitor leaves the pan de muerto on the first tier of the altar.}
-		\label{fig:anim7}
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-jarra-de-agua-1.png}\\\small Beginning of the pour\end{minipage}\hfill
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-jarra-de-agua-2.png}\\\small Stream and filling glass\end{minipage}
+		\caption{Animation 6: the pitcher rotates around its spout, pours the stream, and changes the water level in the glass.}
+		\label{fig:pitcher-eng}
+	\end{figure}
+
+	\subsection{Skeletal Animations}
+	\begin{figure}[H]
+		\centering
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-visitante-altar-1.png}\\\small Arrival at the altar\end{minipage}\hfill
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-visitante-altar-2.png}\\\small Preparing the offering\end{minipage}\\[0.3cm]
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-visitante-pone-ofrenda.png}\\\small Placing the \textit{pan de muerto}\end{minipage}\hfill
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-visitante-reverencia.png}\\\small Final bow\end{minipage}
+		\caption{Animation 7: the visitor reaches the altar, places the \textit{pan de muerto}, and finishes with a bow.}
+		\label{fig:visitor-altar-eng}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.85\textwidth]{images/anim-8-9-panteon.jpg}
-		\caption{Animations 8 and 9: visitor 2 walks through the cemetery while the skeleton dances by the gateway.}
-		\label{fig:anim8}
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-visitante-tumba.png}\\\small Route among graves\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-visitante-observando-tumba.png}\\\small Observing a grave\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-visitante-tumba-bailando.png}\\\small Dance in the cemetery\end{minipage}
+		\caption{Animation 8: the second visitor walks through the cemetery, stops at a grave, and ends with a dance.}
+		\label{fig:visitor-cemetery-eng}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.85\textwidth]{images/faroles-apagados.jpg}
-		\caption{Interaction L: the path with the lanterns off; only the votive candles remain.}
-		\label{fig:lanterns}
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-esqueleto-bailando-1.png}\end{minipage}\hfill
+		\begin{minipage}{0.48\textwidth}\centering\includegraphics[width=\textwidth]{../images/animacion-esqueleto-bailando-2.png}\end{minipage}
+		\caption{Animation 9: two poses of the skeleton dancing beside the cemetery gateway.}
+		\label{fig:skeleton-eng}
 	\end{figure}
+
+	\end{comment}
+
+	\section{Demonstration Video}
+	A demonstration video was produced for the final delivery. It presents the complete journey through the scene, principal models, dynamic lighting, navigation controls, and the nine integrated animations.
+
+	The video shows the three animations developed through code, the three animations created in Blender, and the three skeletal animations. It also includes the interaction used to switch the path lanterns on and off.
+
+	\begin{figure}[H]
+		\centering
+		\href{https://youtu.be/2iYnnTLFxNo}{\includegraphics[width=0.82\textwidth]{../images/miniatura.png}}
+		\caption{CEMPASÚCHIL demonstration video. Click the image to open the video on YouTube.}
+		\label{fig:demo-video-eng}
+	\end{figure}
+
+	\begin{center}
+		\large\textbf{\href{https://youtu.be/2iYnnTLFxNo}{Click here to watch the demonstration video}}
+	\end{center}
+
+	\begin{center}
+		\url{https://youtu.be/2iYnnTLFxNo}
+	\end{center}
+
+	\section{General Conclusions}
+	CEMPASÚCHIL demonstrates that an academic scene can grow incrementally without discarding its earliest decisions. The primitive-based altar served as a planning tool; the modeling stage turned that idea into a walkable environment; texturing and lighting established a visual identity; and animation transformed static objects into events the visitor can activate and observe.
+
+	The main lesson was not one isolated technique, but integration. A model that looks correct in Blender still needs appropriate scale, origin, UVs, exportable materials, and reasonable cost before it works in OpenGL. An attractive light can become too expensive when multiplied across thousands of instances. An animation that is convincing in external software requires a decision about which data to export and how to reproduce them. An application that works on one computer needs portable paths, decoders, and launchers before it becomes a reproducible delivery.
+
+	Optimization did not mean removing detail indiscriminately. Dynamic lighting, translucent materials, photographs, the visual density of the altar, and all animations were preserved, but their computation changed: instances instead of copies, normal maps instead of unnecessary geometry, filtered lights instead of global evaluation, and compact tracks instead of requiring Blender during execution.
+
+	Beyond the technical result, the portraits of Janis Joplin, Kurt Cobain, Valentín Elizalde, Amy Winehouse, Jim Morrison, Jimi Hendrix, and Kristen Pfaff turn the altar into a place of remembrance. The journey does not end only at the zone with the most models or lights; it ends before seven brief lives whose work continues to accompany other people. That permanence connects the project title, the cempasúchil path, and the movement of the final scene.
 
 	\section{Individual Conclusions}
 
 	\subsection*{Basilio Illescas Andrés}
-	\textit{To be written by the team member.}
+	At first, the project appeared solvable by building an altar and placing a few representative objects, but the prototype showed that distribution would be as important as model detail. Working first with primitives helped define the three tiers and identify which objects needed more space. When the proposal expanded toward the cemetery, path, and house, the organization of the work also had to change because the task was no longer one composition but several connected areas.
+
+	One of the main challenges was maintaining a shared visual direction while models were developed separately. Each object could look correct in Blender, yet differences in scale, amount of detail, and style appeared when they were assembled. The altar proportions, spacing between objects, and readability of the scene from the route had to be reviewed several times. Planning did not end with the first delivery; it had to be adjusted whenever new models, animations, or performance problems appeared.
+
+	From the Product Owner role, the most important part was deciding which elements truly contributed to the concept and which only added complexity. The number of objects grew considerably, but the team tried to preserve a recognizable route and keep the altar as the principal focus. It was also important to ensure that partial deliveries did not remain separate projects, but that each one served as the foundation for the next.
+
+	The final result preserves the idea of the first prototype even though it is visually much larger and more detailed. The three-tier structure, warm light, and portraits remain at the center of the proposal. I consider the greatest achievement to be transforming a simple idea into a complete environment without losing the original purpose of the \textit{ofrenda}. This project also made it clear that planning does not mean fixing everything at the beginning, but continuously reviewing whether what is being built still works as a whole.
 
 	\subsection*{Cruz Macedo Samuel Santiago}
-	\textit{To be written by the team member.}
+	My work focused mainly on architectural and environmental elements, so an early challenge was making the cemetery, entrance, path, and house feel like parts of one place. Team-made and library models introduced scale and orientation differences from the first integration. Importing them was not enough: their positions, the terrain, and their appearance from the actual camera height had to be reviewed.
+
+	Compatibility among Windows, Linux, and the other team computers also caused several problems. In some cases, the project compiled but could not find textures or shaders because it was being executed from a different directory. At other times, the difficulty involved Visual Studio, CMake versions, or OpenGL drivers. This required separating errors in the code from errors caused by the execution environment itself.
+
+	Working with GitHub was another important part. When handling models, textures, screenshots, and documentation, changes could be much heavier than in a project formed only by source code. Differences also appeared between local and remote versions, along with integration conflicts and files generated by each operating system that did not belong in the repository. I learned that using Git well does not consist only of making commits, but of keeping changes clear, reviewing repository state before synchronizing, and avoiding files that can be regenerated.
+
+	Testing on different platforms helped identify assumptions that were invisible on a single computer. Paths, image formats, window creation, and OpenGL availability could change even when the code was the same. I believe this improved the stability of the project because it forced us to prepare an application that depended less on one specific computer. The result was not only a complete scene, but a project that can be built and reviewed outside the environment in which it was originally developed.
 
 	\subsection*{Pérez Olvera Alexis Abraham}
-	\textit{To be written by the team member.}
+	A considerable part of my work focused on models and objects for the \textit{ofrenda}. At first the goal was to meet the required model count, but as the altar filled, it became more important to review how the objects worked together. Some hid others, intersected the candles, or failed to rest correctly on the tiers. The final composition required several adjustments to distribute food, vessels, flowers, portraits, and decorations without losing clarity.
+
+	Texturing presented difficulties different from modeling. Materials that looked correct in Blender could not always be exported in the same way, especially when they used procedural nodes. Texture baking transferred part of that detail to OpenGL, but it also required reviewing UVs, resolutions, color spaces, and normal maps. In some cases it was necessary to return to the model, correct its mapping, and export it again before obtaining an acceptable result.
+
+	Lighting completely changed the perception of materials. A texture could look correct under Blender lighting and appear too dark or glossy in the application. Glass and water required treatment different from opaque materials, while votive candles and lanterns had to illuminate the scene without making rendering too expensive. This made it clear that modeling, texturing, and lighting cannot be reviewed independently.
+
+	Photograph integration was one of the stages that gave the altar its final meaning. Having seven different images without duplicating all picture-frame geometry allowed the organization to remain cleaner. The crop and orientation of each image also had to be controlled so it appeared correctly on the model surface. Looking at the complete \textit{ofrenda}, I believe the detailed work helped the objects stop feeling like separate tests and begin to form a scene with intention.
 
 	\subsection*{Trejo Olvera Emmanuel}
-	\textit{To be written by the team member.}
+	My work focused mainly on overall integration, OpenGL development, optimization, and testing on macOS. A recurring problem was that something could work correctly in Blender or in an isolated test but not necessarily inside the complete scene. Integrating a model meant checking its path, materials, scale, and bounding box; integrating an animation also required coordinating time, transforms, and buffer updates without affecting the rest of the rendering process.
 
-	\section{Demo Video}
-	Link to the 3 to 5 minute video: \textit{(to be added)}.
+	On macOS, several issues involved execution paths, Retina display scaling, image loading, and launcher behavior. In some cases, the window was created correctly but the rendered area did not match the real framebuffer size. It was also necessary to consider that Finder, the terminal, and a packaged application do not always use the same working directory. This led to improved resource discovery and eliminated dependence on paths relative to the folder from which the program was launched.
+
+	Animation integration was probably the most complex part. The butterfly and camera route could be controlled directly through code, but \textit{papel picado} had to preserve the movement created in Blender. Early approaches did not produce the same result: the sheets moved uniformly or deformed from incorrect regions. Exporting a vertex cache kept the upper edge fixed and reproduced each sheet's deformation. The whirlwind, pitcher, and characters presented similar challenges because each required different information to be represented inside the engine.
+
+	Performance also became a problem when reaching the altar. The number of instances, transparent surfaces, and lights caused a frame-rate loss that was not noticeable in other areas. The team did not want to remove lighting or reduce the composition excessively, so work focused on filtering lights, reusing geometry, discarding elements outside the camera, and optimizing heavy models. This required repeated testing of the complete scene because a local improvement could produce a visual change in another material or animation.
+
+	Finally, remote integration and GitHub required care with large files, branches, and stable versions. There were moments when documentation, code, and resources advanced simultaneously, making it easy to mix changes or attempt to upload generated files that were too heavy. Maintaining a stable branch, reviewing every integration, and cleaning the project before packaging were as important as implementing the graphics features. What I take from the project is the understanding that a scene of this size is not complete merely when it looks good, but when it can also be built, executed, documented, and delivered consistently.
 
 	\section{References}
 	\begin{itemize}[leftmargin=*]
